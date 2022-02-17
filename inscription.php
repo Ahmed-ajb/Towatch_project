@@ -1,26 +1,24 @@
 <?php
 include "dbconnect.php"
-if (isset($_POST['Inscrire'])) {
-    $nom=$_POST['nom'];
-    $prénom=$_POST['prenom'];
-    $sexe=$_POST['Sexe'];
-    $date=$_POST['Date de naissance'];
-    $pays=$_POST['pays'];
-    $tel=$_POST['phone'];
-    $email=$_POST['email'];
-    $password=$_POST['Mot de passe'];
-     $ville=$_POST['ville'];
-    $query="INSERT INTO `utilisateurs`(`Id_user`, `Nom_user`, `Prenom_user`, `Sexe`, `Date_naissance`, `Pays`, `Num_tel`, `Email`, `password`, `ville`) VALUES ('3','$nom','$prénom','$sexe','$date','$pays','$tel','$email','$password','$ville')";
-    $con = mysql_connect('localhost','root','','towatch');//for wamp 3rd feild is balnk
-if (!$con)
-{
-die('Could not connect: ' . mysql_error());
+$objectPdo->prepare('INSERT INTO `utilisateurs' VALUES (:Nom_user,:Prenom_user,:Sexe,:Date_naissance,:Pays,:Num_tel,:Email,:password,:ville)');
+    $pdostat->bindValue(':Nom_user,$_POST['nom'],PDO::PARAM_STR);
+$pdostat->bindValue(':Prenom_user,$_POST['prenom'],PDO::PARAM_STR);
+    $pdostat->bindValue(':Sexe,$_POST['Sexe'],PDO::PARAM_STR);
+$pdostat->bindValue(':Date_naissance,$_POST['date'],PDO::PARAM_STR);
+    $pdostat->bindValue(':Pays,$_POST['pays'],PDO::PARAM_STR);
+$pdostat->bindValue(':Num_tel,$_POST['phone'],PDO::PARAM_STR);
+    $pdostat->bindValue(':Email,$_POST['email'],PDO::PARAM_STR);
+$pdostat->bindValue(':password,$_POST['Mot de passe'],PDO::PARAM_STR);
+    $pdostat->bindValue(':ville,$_POST['ville'],PDO::PARAM_STR);
+$inserer=$pdostat->execute();
+if($inserer){
+    $message='utilisateur ajouté';
+}else{
+    $message='insertion echouée';
+
 }
-mysql_select_db("$database", $con);
-    if (!mysqli_query($con,$query)) {
-      die('ERREUR');
-    }else{
-    echo "VALIDE";
-    }
-    }
+$conn = null;
+  
+   
+?>
 ?>
