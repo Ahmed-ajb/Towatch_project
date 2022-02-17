@@ -1,13 +1,14 @@
 <?php
 include "dbconnect.php"
 if (isset($_POST['submit'])) {
-    $nom=$_POST['Nom_user'];
-    $prénom=$_POST['Prenom_user'];
-    $email=$_POST['Email'];
-    $password=$_POST['password'];
+    $nom=$_POST['nom'];
+    $prénom=$_POST['prenom'];
+    $email=$_POST['email'];
+    $password=$_POST['Mot de passe'];
     $sexe=$_POST['Sexe'];
-    $date=$_POST['Date_naissance'];
-    $pays=$_POST['Pays'];
+    $date=$_POST['Date de naissance'];
+    $pays=$_POST['pays'];
+     $ville=$_POST['ville'];
     $tel=$_POST['Num_tel'];
     $query="INSERT INTO utilisateurs(Nom_user,Prenom_user,Email,password,Sexe,Date_naissance,Pays,Num_tel)VALUES('$nom','$prénom','$email','$password','$sexe','$date','$pays','$tel');";
     
