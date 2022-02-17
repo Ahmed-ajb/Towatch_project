@@ -10,7 +10,7 @@ if (isset($_POST['Inscrire'])) {
     $email=$_POST['email'];
     $password=$_POST['Mot de passe'];
      $ville=$_POST['ville'];
-    $query="INSERT INTO utilisateurs(Id_user,Nom_user,Prenom_user,Sexe,Date_naissance,Pays,Num_tel,Email,password,ville)VALUES('1','$nom','$prénom','$sexe','$date','$pays','$tel','$email','$password','$ville');";
+    $query="INSERT INTO `utilisateurs`(`Id_user`, `Nom_user`, `Prenom_user`, `Sexe`, `Date_naissance`, `Pays`, `Num_tel`, `Email`, `password`, `ville`) VALUES ('3','$nom','$prénom','$sexe','$date','$pays','$tel','$email','$password','$ville')";
     $con = mysql_connect("localhost","root" ,"");//for wamp 3rd feild is balnk
 if (!$con)
 {
