@@ -1,15 +1,15 @@
-<?php
-$server="localhost";
-$dbname="towatch";
-$user="root";
-$password="";
-$con= mysqli_connect($server,$user,$password,$dbname);
-if($con)
-{
-	echo "connected successfully";
-}
-else{
-	echo "something is wrong";
-}
 
+       <?php
+$server = "localhost";
+$username = "username";
+$password = ""; //your password
+
+// Create connection
+$connection = mysqli_connect($server, $username, $password);
+
+// Check connection
+if (!$connection) {
+  die("Connection error: " . mysqli_connect_error());
+}
+echo "Connection successfull";
 ?>

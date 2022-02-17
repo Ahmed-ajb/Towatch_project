@@ -10,6 +10,13 @@ if (isset($_POST['submit'])) {
     $pays=$_POST['Pays'];
     $tel=$_POST['Num_tel'];
     $query="INSERT INTO utilisateurs(Nom_user,Prenom_user,Email,password,Sexe,Date_naissance,Pays,Num_tel)VALUES('$nom','$prénom','$email','$password','$sexe','$date','$pays','$tel');";
+    
+    $con = mysql_connect("localhost","root" ,"");//for wamp 3rd feild is balnk
+if (!$con)
+{
+die('Could not connect: ' . mysql_error());
+}
+mysql_select_db("$database", $con);
     if (!mysqli_query($con,$query)) {
       die('ERREUR');
     }else{
