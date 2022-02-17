@@ -11,6 +11,7 @@
             $servername = 'localhost';
             $username = 'root';
             $password = '';
+            $database='towatch';
             
             //On établit la connexion
             $conn = mysqli_connect($servername, $username, $password);
