@@ -16,6 +16,9 @@ if (isset($_POST['submit'])) {
     $tel=$_POST['Num_tel'];
     $query="INSERT INTO utilisateurs(Nom_user,Prenom_user,Email,password,Sexe,Date_naissance,Pays,ville,Num_tel)VALUES('$nom','$prénom','$email','$password','$sexe','$date','$pays','$ville,$tel');";
 
+    $tel=$_POST['phone'];
+    $query="INSERT INTO utilisateurs(Nom_user,Prenom_user,Email,password,Sexe,Date_naissance,Pays,Num_tel)VALUES('$nom','$prénom','$email','$password','$sexe','$date','$pays','$tel');";
+    
     $con = mysql_connect("localhost","root" ,"");//for wamp 3rd feild is balnk
 if (!$con)
 {
