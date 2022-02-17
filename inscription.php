@@ -10,6 +10,9 @@ if (isset($_POST['submit'])) {
     $pays=$_POST['pays'];
     $ville=$_POST['ville'];
 
+    $date=$_POST['Date de naissance'];
+    $pays=$_POST['pays'];
+     $ville=$_POST['ville'];
     $tel=$_POST['Num_tel'];
     $query="INSERT INTO utilisateurs(Nom_user,Prenom_user,Email,password,Sexe,Date_naissance,Pays,ville,Num_tel)VALUES('$nom','$prénom','$email','$password','$sexe','$date','$pays','$ville,$tel');";
 
