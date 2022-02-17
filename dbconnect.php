@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Cours PHP / MySQL</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="cours.css">
-    </head>
-    <body>
-        <h1>Bases de données MySQL</h1>  
-        <?php
-            $servername = 'localhost';
-            $username = 'root';
-            $password = '';
-            $database='towatch';
-            
-            //On établit la connexion
-            $conn = mysqli_connect($servername, $username, $password);
-            
-            //On vérifie la connexion
-            if(!$conn){
-                die('Erreur : ' .mysqli_connect_error());
-            }
-            echo 'Connexion réussie';
-        ?>
-    </body>
-</html>
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+
+try {
+  $conn = new PDO("mysql:host=$servername;dbname=towatch", $username, $password);
+  // set the PDO error mode to exception
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  echo "Connected successfully";
+} catch(PDOException $e) {
+  echo "Connection failed: " . $e->getMessage();
+}
+?>
