@@ -16,7 +16,7 @@
 
           $_SESSION["autoriser"]="oui";
           $_SESSION["nomPrenom"]=strtoupper($tab[0]["Nom_user"]." ".$tab[0]["Prenom_user"]);
-          header("location:session.php");
+          header("location:index.php");
 
         }
 

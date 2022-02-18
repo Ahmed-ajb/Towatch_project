@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if(@$_SESSION["autoriser"]!="oui"){
+        header("location:login.html");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -75,7 +82,7 @@ form.form-search:before {
                      <div class="user_profle_side">
                         <div class="user_img"><img class="img-responsive" src="images/layout_img/insta.png" alt="#" /></div>
                         <div class="user_info">
-                           <h6>ToWatcher</</h6>
+                           <h6><?=$_SESSION["nomPrenom"]?></h6>
                            <p><span class="online_animation"></span> En Ligne</p>
                         </div>
                      </div>
@@ -133,12 +140,14 @@ form.form-search:before {
                               </ul>
                               <ul class="user_profile_dd">
                                  <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta.png" alt="#" /><span class="name_user">ToWatcher</</span></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta1.png" alt="#" /><span class="name_user">
+                                        <?=$_SESSION["nomPrenom"]?>
+                                        </span></a>
                                     <div class="dropdown-menu">
                                        <a class="dropdown-item" href="profile.html">My Profile</a>
                                        <a class="dropdown-item" href="settings.html">Settings</a>
                                        <a class="dropdown-item" href="help.html">Help</a>
-                                       <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                       <a class="dropdown-item" href="deconnexion.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                     </div>
                                  </li>
                               </ul>
