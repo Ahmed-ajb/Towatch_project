@@ -52,23 +52,23 @@
    
    <label class="label_field">Nom</label>
    
-   <input type="text" name="nom" placeholder=" Votre Nom" />
+   <input type="text" required="required" name="nom" placeholder=" Votre Nom" />
    </div>
    <div class="field">
    <label class="label_field">Prénom</label>
-   <input type="text" name="prenom" placeholder=" Votre Prénom " />
+   <input type="text" required="required" name="prenom" placeholder=" Votre Prénom " />
    </div>
    <div class="field">
    <label class="label_field">Email</label>
-   <input type="email" name="email" placeholder=" Votre E-mail" />
+   <input type="email" required="required" name="email" placeholder=" Votre E-mail" />
    </div>
    <div class="field">
     <label class="label_field">Mot de passe</label>
-   <input type="Password" name="password" placeholder="Mot de passe" />
+   <input type="Password" required="required" name="password" placeholder="Mot de passe" />
 </div>
    <div class="field">
    <label class="label_field" style=" width: 100px; line-height: 20px; text-align: right; height: 35px;">Date de Naissance</label>
-   <input type="Date" name="date" placeholder=" Date de naissance" />
+   <input type="Date" name="date" required="required" placeholder=" Date de naissance" />
    </div>
    <div class="field">
    <label class="label_field">Sexe</label>
@@ -78,7 +78,7 @@
     <option value="G">Autre</option>
    </select>
    <label class="label_field" >pays</label>
-   <select name="pays">
+   <select required="required" name="pays">
 <option value="AFG">Maroc</option>
 <option value="ALA">Åfghanistan</option>
 <option value="ALB">Albanie</option>
@@ -263,11 +263,11 @@
    
    <label class="label_field">Ville</label>
    
-   <input type="text" name="ville" placeholder=" Votre ville" />
+   <input type="text" required="required" name="ville" placeholder=" Votre ville" />
 </div>
    <div class="field">
    <label class="label_field">Num Tél</label>
- <input id="phone" name="phone" placeholder="Exemple : 0612345678" type="tel">  </div>
+ <input id="phone" required="required" name="phone" placeholder="Exemple : 0612345678" type="tel">  </div>
    <div class="field margin_0">
    <label class="label_field hidden">hidden label</label>
    <button class="main_bt" type="submit" name="inscrire" >Inscrire</button>
