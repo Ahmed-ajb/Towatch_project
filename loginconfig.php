@@ -1,27 +1,23 @@
 <?php
-    session_start();
-     include "dbconnect.php";
+        session_start();
+    include("dbconnect.php");
 
+    @$email=$_POST["email"];
+    @$password=$_POST["password"];
 
-    $myemail = $_POST["username"];
-    $mypassword = $_POST["pwd"];
-    $loFmUname = strtolower($myemail);
-
-    
-        $sql = "SELECT * FROM utilisateurs WHERE $myemail = '$db_field['email']' AND $mypassword = '$db_field['password']'";
-        $result = mysql_query($sql);
-        echo"dzebug";
-
-
-        if($result){
-            $_session['loged'] = '$myemail';
-            header('location:index.html');
-            die();
-        }
-
+        $res=$conn->prepare("select * from utilisateurs where email=? and password=? limit 1");
+        $res->setFetchMode(PDO::FETCH_ASSOC);
+        $res->execute(array($email,$password));
+        $tab=$res->fetchAll();
+        if(count($tab)==0)
+            echo "<script>alert('Mauvais login ou mot de passe!'); window.location='sign.php'</script>";
         else{
-            echo"Invalid username and/or password please";
-            echo "<a href='login.php'>try again</a>";
+
+
+          $_SESSION["autoriser"]="oui";
+          $_SESSION["nomPrenom"]=strtoupper($tab[0]["Nom_user"]." ".$tab[0]["Prenom_user"]);
+          header("location:session.php");
+
         }
 
 ?>

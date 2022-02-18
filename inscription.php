@@ -3,7 +3,6 @@
   session_start();
   include "dbconnect.php";
 
-//if(  isset($_POST['sexe']) && isset($_POST['date']) && isset($_POST['pays'])  && isset($_POST['password'])){
  
     $nom=$_POST['nom'];
     $prenom=$_POST['prenom'];
@@ -14,6 +13,14 @@
     $email=$_POST['email'];
     $password=$_POST['password'];
     $ville=$_POST['ville'];
+
+      $req=$conn->prepare("select id_user from utilisateurs where email=? limit 1");
+      $req->setFetchMode(PDO::FETCH_ASSOC);
+      $req->execute(array($email));
+      $tab=$req->fetchAll();
+      if(count($tab)>0)
+        echo "<script>alert('Email existe deja a chriif'); window.location='sign.php'</script>";
+      else{
  
  
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -21,7 +28,7 @@ $sql = "INSERT INTO utilisateurs (Nom_user,Prenom_user,Email,Password,Sexe,Date_
 VALUES ('$nom','$prenom','$email','$password','$sexe','$date','$pays','$ville','$tel')";
  
 $conn->exec($sql);
-echo "<script>alert('Account successfully added!'); window.location='Login.html'</script>";
+echo "<script>alert('Account successfully added!'); window.location='Login.html'</script>";}
 ?>
         
     
