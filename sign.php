@@ -64,21 +64,21 @@
    </div>
    <div class="field">
     <label class="label_field">Mot de passe</label>
-   <input type="Password" name="Mot de passe" placeholder="Mot de passe" />
+   <input type="Password" name="password" placeholder="Mot de passe" />
 </div>
    <div class="field">
    <label class="label_field" style=" width: 100px; line-height: 20px; text-align: right; height: 35px;">Date de Naissance</label>
-   <input type="Date" name="Date de naissance" placeholder=" Date de naissance" />
+   <input type="Date" name="date" placeholder=" Date de naissance" />
    </div>
    <div class="field">
    <label class="label_field">Sexe</label>
-   <select  name="Sexe">
-   <option>Homme</option>
-   <option>Femme</option>
-    <option>Autre</option>
+   <select  name="sexe">
+   <option value="H">Homme</option>
+   <option value="F">Femme</option>
+    <option value="G">Autre</option>
    </select>
-   <label class="label_field" name=pays>pays</label>
-   <select>
+   <label class="label_field" >pays</label>
+   <select name="pays">
 <option value="AFG">Maroc</option>
 <option value="ALA">Åfghanistan</option>
 <option value="ALB">Albanie</option>
@@ -270,7 +270,8 @@
  <input id="phone" name="phone" placeholder="Exemple : 0612345678" type="tel">  </div>
    <div class="field margin_0">
    <label class="label_field hidden">hidden label</label>
-   <button class="main_bt" type="submit" name="Inscrire" >Inscrire</button>
+   <button class="main_bt" type="submit" name="inscrire" >Inscrire</button>
+    
    <a class="forgot" href="login.html">Vou avez dèja un compte?</a>
    </div>
   </form>
