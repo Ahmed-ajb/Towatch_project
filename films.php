@@ -69,7 +69,7 @@ form.form-search:before {
                <div class="sidebar_blog_1">
                   <div class="sidebar-header">
                      <div class="logo_section">
-                        <a href="index.html"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
+                        <a href="index.php"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
                      </div>
                   </div>
                   <div class="sidebar_user_info">
@@ -87,28 +87,28 @@ form.form-search:before {
                   <h4>"welcome ToWatcher"</h4>
                   <ul class="list-unstyled components">
         
-                      <li><a href="index.html"><i class="fa fa-home orange_color"></i> <span>ToWatch Acceuil</span></a></li>
+                      <li><a href="index.php"><i class="fa fa-home orange_color"></i> <span>ToWatch Acceuil</span></a></li>
                     
-                     <li><a href="films.html"><i class="fa fa-film purple_color2"></i> <span>Our Films</span></a></li>
+                     <li><a href="films.php"><i class="fa fa-film purple_color2"></i> <span>Our Films</span></a></li>
          
-                     <li><a href="series.html"><i class="fa fa-play-circle blue1_color"></i> <span>Our series</span></a></li>
+                     <li><a href="series.php"><i class="fa fa-play-circle blue1_color"></i> <span>Our series</span></a></li>
                      <li>
-                        <a href="watchlist.html"><i class="fa fa-bookmark red_color"></i> <span>Your watchlist</span></a>
+                        <a href="watchlist.php"><i class="fa fa-bookmark red_color"></i> <span>Your watchlist</span></a>
                      </li>
                      <li class="active">
                         <a href="#additional_page" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-clone yellow_color"></i> <span>Additional Pages</span></a>
                         <ul class="collapse list-unstyled" id="additional_page">
                            <li>
-                              <a href="profile.html">> <span>Profile</span></a>
+                              <a href="profile.php">> <span>Profile</span></a>
                            </li>
                            <li>
-                              <a href="project.html">> <span>Projects</span></a>
+                              <a href="project.php">> <span>Projects</span></a>
                            </li>
                            <li>
-                              <a href="login.html">> <span>Login</span></a>
+                              <a href="login.php">> <span>Login</span></a>
                            </li>
                            <li>
-                              <a href="404_error.html">> <span>404 Error</span></a>
+                              <a href="404_error.php">> <span>404 Error</span></a>
                            </li>
                         </ul>
                      </li>
@@ -124,7 +124,7 @@ form.form-search:before {
                      <div class="full">
                         <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                         <div class="logo_section">
-                           <a href="index.html"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a>
+                           <a href="index.php"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a>
                         </div>
                         <div class="right_topbar">
                            <div class="icon_info">
@@ -137,9 +137,9 @@ form.form-search:before {
                                  <li>
                                     <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta.png" alt="#" /><span class="name_user">ToWatcher</</span></a>
                                     <div class="dropdown-menu">
-                                       <a class="dropdown-item" href="profile.html">My Profile</a>
-                                       <a class="dropdown-item" href="settings.html">Settings</a>
-                                       <a class="dropdown-item" href="help.html">Help</a>
+                                       <a class="dropdown-item" href="profile.php">My Profile</a>
+                                       <a class="dropdown-item" href="settings.php">Settings</a>
+                                       <a class="dropdown-item" href="help.php">Help</a>
                                        <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                     </div>
                                  </li>

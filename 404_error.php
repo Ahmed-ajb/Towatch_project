@@ -48,7 +48,7 @@
                   <br>
                   <h3>PAGE NOT FOUND !</h3>
                   <P>YOU SEEM TO BE TRYING TO FIND HIS WAY HOME</P>
-                  <div class="center"><a class="main_bt" href="index.html">Go To Home Page</a></div>
+                  <div class="center"><a class="main_bt" href="index.php">Go To Home Page</a></div>
                </div>
             </div>
          </div>

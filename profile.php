@@ -43,7 +43,7 @@
                <div class="sidebar_blog_1">
                   <div class="sidebar-header">
                      <div class="logo_section">
-                        <a href="index.html"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
+                        <a href="index.php"><img class="logo_icon img-responsive" src="images/logo/logo_icon.png" alt="#" /></a>
                      </div>
                   </div>
                   <div class="sidebar_user_info">
@@ -61,28 +61,28 @@
                   <h4>"Your perfect movie ToWatch"</h4>
                   <ul class="list-unstyled components">
         
-                     <li><a href="widgets.html"><i class="fa fa-clock-o orange_color"></i> <span>Acceuil</span></a></li>
+                     <li><a href="widgets.php"><i class="fa fa-clock-o orange_color"></i> <span>Acceuil</span></a></li>
                     
-                     <li><a href="tables.html"><i class="fa fa-table purple_color2"></i> <span>Films</span></a></li>
+                     <li><a href="tables.php"><i class="fa fa-table purple_color2"></i> <span>Films</span></a></li>
          
-                     <li><a href="price.html"><i class="fa fa-briefcase blue1_color"></i> <span>series</span></a></li>
+                     <li><a href="price.php"><i class="fa fa-briefcase blue1_color"></i> <span>series</span></a></li>
                      <li>
-                        <a href="contact.html"><i class="fa fa-paper-plane red_color"></i> <span>watchlist</span></a>
+                        <a href="contact.php"><i class="fa fa-paper-plane red_color"></i> <span>watchlist</span></a>
                      </li>
                      <li class="active">
                         <a href="#additional_page" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-clone yellow_color"></i> <span>Additional Pages</span></a>
                         <ul class="collapse list-unstyled" id="additional_page">
                            <li>
-                              <a href="profile.html">> <span>Profile</span></a>
+                              <a href="profile.php">> <span>Profile</span></a>
                            </li>
                            <li>
-                              <a href="project.html">> <span>Projects</span></a>
+                              <a href="project.php">> <span>Projects</span></a>
                            </li>
                            <li>
-                              <a href="login.html">> <span>Login</span></a>
+                              <a href="login.php">> <span>Login</span></a>
                            </li>
                            <li>
-                              <a href="404_error.html">> <span>404 Error</span></a>
+                              <a href="404_error.php">> <span>404 Error</span></a>
                            </li>
                         </ul>
                      </li>
@@ -98,7 +98,7 @@
                      <div class="full">
                         <button type="button" id="sidebarCollapse" class="sidebar_toggle"><i class="fa fa-bars"></i></button>
                         <div class="logo_section">
-                           <a href="index.html"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a>
+                           <a href="index.php"><img class="img-responsive" src="images/logo/logo.png" alt="#" /></a>
                         </div>
                         <div class="right_topbar">
                            <div class="icon_info">
