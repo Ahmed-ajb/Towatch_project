@@ -2,7 +2,7 @@
         session_start();
     include("dbconnect.php");
 
-    @$email=$_POST["email"];
+    @$email=strtolower($_POST["email"]);
     @$password=$_POST["password"];
 
         $res=$conn->prepare("select * from utilisateurs where email=? and password=? limit 1");
@@ -10,7 +10,8 @@
         $res->execute(array($email,$password));
         $tab=$res->fetchAll();
         if(count($tab)==0)
-            echo "<script>alert('Mauvais login ou mot de passe!'); window.location='sign.php'</script>";
+          echo "<script>alert('Mauvais login ou mot de passe!'); window.location='login.php'</script>";
+            // echo "<a href='login.php'>try again</a>";
         else{
 
 

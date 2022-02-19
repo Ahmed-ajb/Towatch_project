@@ -63,7 +63,7 @@
                            </div>
                            <div class="field margin_0">
                               <label class="label_field hidden">hidden label</label>
-                              <button type ="submit" class="main_bt">connexion</button>
+                              <button class="main_bt">connexion</button>
                            </div>
                         </fieldset>
                      </form>

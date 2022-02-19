@@ -10,7 +10,7 @@
     $date=$_POST['date'];
     $pays=$_POST['pays'];
     $tel=$_POST['phone'];
-    $email=$_POST['email'];
+    $email=strtolower($_POST['email']);
     $password=$_POST['password'];
     $ville=$_POST['ville'];
 

@@ -272,7 +272,7 @@
    <label class="label_field hidden">hidden label</label>
    <button class="main_bt" type="submit" name="inscrire" >Inscrire</button>
     
-   <a class="forgot" href="login.html">Vou avez dèja un compte?</a>
+   <a class="forgot" href="login.php">Vou avez dèja un compte?</a>
    </div>
   </form>
                   </div>
