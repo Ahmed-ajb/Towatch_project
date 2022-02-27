@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if(@$_SESSION["autoriser"]!="oui"){
+        header("location:login.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -137,7 +144,7 @@ form.form-search:before {
                                        <a class="dropdown-item" href="profile.php">My Profile</a>
                                        <a class="dropdown-item" href="settings.php">Settings</a>
                                        <a class="dropdown-item" href="help.php">Help</a>
-                                       <a class="dropdown-item" href="#"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                       <a class="dropdown-item" href="deconnexion.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                     </div>
                                  </li>
                               </ul>
