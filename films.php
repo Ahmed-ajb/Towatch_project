@@ -1,3 +1,10 @@
+<?php
+session_start();
+    if(@$_SESSION["autoriser"]!="oui"){
+        header("location:login.html");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -77,7 +84,7 @@ form.form-search:before {
                      <div class="user_profle_side">
                         <div class="user_img"><img class="img-responsive" src="images/layout_img/insta.png" alt="#" /></div>
                         <div class="user_info">
-                           <h6>ToWatcher</h6>
+                           <h6><?=$_SESSION["nomPrenom"]?></h6>
                            <p><span class="online_animation"></span> En Ligne</p>
                         </div>
                      </div>
