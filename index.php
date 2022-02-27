@@ -177,8 +177,6 @@ form.form-search:before {
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.
                              </p>
                             <button class="movie-list-item-button">Watch</button>
