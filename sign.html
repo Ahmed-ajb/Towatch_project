@@ -34,6 +34,8 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
+
+</style>  
    </head>
    <body class="inner_page login">
       <div class="full_container">
@@ -47,37 +49,38 @@
                   </div>
                   <div class="login_form">
                      <form action="inscription.php" method="post">
+                        
    <fieldset>
    <div class="field">
    
-   <label class="label_field">Nom</label>
+   <label class="label_field">* Nom</label>
    
    <input type="text" required="required" name="nom" placeholder=" Votre Nom" />
    </div>
    <div class="field">
-   <label class="label_field">Prénom</label>
+   <label class="label_field">* Prénom</label>
    <input type="text" required="required" name="prenom" placeholder=" Votre Prénom " />
    </div>
    <div class="field">
-   <label class="label_field">Email</label>
+   <label class="label_field">* Email</label>
    <input type="email" required="required" name="email" placeholder=" Votre E-mail" />
    </div>
    <div class="field">
-    <label class="label_field">Mot de passe</label>
+    <label class="label_field">* Mot de passe</label>
    <input type="Password" required="required" name="password" placeholder="Mot de passe" />
 </div>
    <div class="field">
-   <label class="label_field" style=" width: 100px; line-height: 20px; text-align: right; height: 35px;">Date de Naissance</label>
+   <label class="label_field" style=" width: 100px; line-height: 20px; text-align: right; height: 35px;">* Date de Naissance</label>
    <input type="Date" name="date" required="required" placeholder=" Date de naissance" />
    </div>
    <div class="field">
-   <label class="label_field">Sexe</label>
+   <label class="label_field">* Sexe</label>
    <select  name="sexe">
    <option value="H">Homme</option>
    <option value="F">Femme</option>
     <option value="G">Autre</option>
    </select>
-   <label class="label_field" >pays</label>
+   <label class="label_field" >* Pays</label>
    <select required="required" name="pays">
 <option value="MAR">Maroc</option>
 <option value="AFG">Åfghanistan</option>
@@ -261,18 +264,20 @@
    </div>
    <div class="field">
    
-   <label class="label_field">Ville</label>
+   <label class="label_field">* Ville</label>
    
    <input type="text" required="required" name="ville" placeholder=" Votre ville" />
 </div>
    <div class="field">
-   <label class="label_field">Num Tél</label>
+   <label class="label_field">* Num Tél</label>
  <input id="phone" required="required" name="phone" placeholder="Exemple : 0612345678" type="tel">  </div>
    <div class="field margin_0">
    <label class="label_field hidden">hidden label</label>
    <button class="main_bt" type="submit" name="inscrire" >Inscrire</button>
-    
-   <a class="forgot" href="login.php">Vou avez dèja un compte?</a>
+   <a class="forgot" href="login.php">Vous avez dèja un compte?</a>
+<label class="label_field hidden">hidden label</label>
+   <h6>(*) Ces champs sont obligatoires</h6>
+
    </div>
   </form>
                   </div>
