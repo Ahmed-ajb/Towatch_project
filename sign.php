@@ -80,6 +80,7 @@
    <option value="F">Femme</option>
     <option value="G">Autre</option>
    </select>
+</div>
     <div class="field">
    <label class="label_field">* Profession</label>
    <select  name="profession">
