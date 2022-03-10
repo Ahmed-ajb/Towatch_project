@@ -104,6 +104,8 @@
 <option value="ECR">Ecrivain</option>
 <option value="AUT">Autre</option>
 <option value="AUC">Aucun</option>
+</select>
+</div>
    <label class="label_field" >* Pays</label>
    <select required="required" name="pays">
 <option value="MAR">Maroc</option>
