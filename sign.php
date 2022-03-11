@@ -82,7 +82,9 @@
     <option value="G">Autre</option>
    </select>
 </div>
- 
+
+<div class="field">
+
    <label class="label_field" >* Pays</label>
    <select required="required" name="pays">
 <option value="MAR">Maroc</option>
@@ -265,6 +267,7 @@
 <option value="ZWE">Zimbabwe</option>
 </select>
    </div>
+
    <div class="field">
    
    <label class="label_field">* Ville</label>
