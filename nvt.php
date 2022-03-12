@@ -9,9 +9,8 @@ $data_nb = mysql_fetch_array($rqut_nb);
 $nb = ''.$data_nb['recuperation'].'';*/
   $contenutitles = $conn->query('SELECT * FROM titles ORDER BY Start_year Desc LIMIT 8;');
 
- echo '<table>';
+ /*echo '<table>';
   while($ligne = $contenutitles->fetch()){
-    
     echo '<tr>';
         echo '<td>';
           echo $ligne['Id_title'];
@@ -43,7 +42,6 @@ $nb = ''.$data_nb['recuperation'].'';*/
 
          echo '</tr>';
        }
-       echo '<table>';
-
+       echo '<table>';*/
 session_destroy();
 ?>
