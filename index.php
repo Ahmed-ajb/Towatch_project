@@ -142,7 +142,7 @@ form.form-search:before {
                               </ul>
                               <ul class="user_profile_dd">
                                  <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta1.png" alt="#" /><span class="name_user">
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta.png" alt="#" /><span class="name_user">
                                         <?=$_SESSION["nomPrenom"]?>
                                         </span></a>
                                     <div class="dropdown-menu">
