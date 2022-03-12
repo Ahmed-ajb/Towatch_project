@@ -3,31 +3,47 @@
     include("dbconnect.php");
 
 // 2 - Récupération du nombre de lignes contenu dans la table
-$rqut_nb ="SELECT COUNT( date_ajout ) as recuperation FROM titles;";
+
+/*$rqut_nb ="SELECT COUNT( date_ajout ) as recuperation FROM titles;";
 $data_nb = mysql_fetch_array($rqut_nb);
-$nb = ''.$data_nb['recuperation'].'';
+$nb = ''.$data_nb['recuperation'].'';*/
+  $contenutitles = $conn->query('SELECT * FROM titles ORDER BY Start_year Desc LIMIT 8;');
 
-// 3 - Nombre de lignes à récupérer
-$ligne = $nb - 8;
+ echo '<table>';
+  while($ligne = $contenutitles->fetch()){
+    
+    echo '<tr>';
+        echo '<td>';
+          echo $ligne['Id_title'];
+        echo '</td>';
+         echo '<td>';
+          echo $ligne['Title'];
+        echo '</td>';
+         echo '<td>';
+          echo $ligne['Genre'];
+        echo '</td>';
+         echo '<td>';
+          echo $ligne['Langue'];
+        echo '</td>';
 
-// 4 - Récupération des lignes
-$query = "SELECT * FROM `titles` LIMIT $ligne , $nb";
-$result = mysql_query( $query );
+        echo '<td>';
+          echo $ligne['Is_Adult'];
+           echo '</td>';
 
-// 5 - Vérification
-if ( !$result ) {
-  $message  = 'Invalid query: ' . mysql_error() . "n";
-  $message .= 'Whole query: ' . $query;
-  die( $message );
-}
+           echo '<td>';
+              echo $ligne['Is_film'];
+            echo '</td>';
 
-// 6 - Afficher les résultats
-while ( $row = mysql_fetch_assoc( $result ) ) {
-echo '  Date: ' . $row['date_ajout'] . ' - ' . "n";
-echo '  title ' . $row['title'] . ' kWh,' . "n";
-echo '<br />';
-}
+           echo '<td>';
+             echo $ligne['Start_year'];
+           echo '</td>';
+           echo '<td>';
+             echo $ligne['release_date'];
+           echo '</td>';
 
-// Fermer la connexion à MySQL
+         echo '</tr>';
+       }
+       echo '<table>';
+
 session_destroy();
 ?>
