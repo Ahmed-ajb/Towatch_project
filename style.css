@@ -933,7 +933,7 @@ a[data-toggle="collapse"] {
     box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
     margin-left: -40px;
     margin-right: -40px;
-    position: absolute;
+    position: relative;
 }
 
 .page_title h2 {
@@ -1566,7 +1566,7 @@ a[data-toggle="collapse"] {
 }
 
 #testimonial_slider.carousel .item {
-    color: #999;
+    color: #333;
     font-size: 14px;
     text-align: center;
     overflow: hidden;

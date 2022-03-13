@@ -42,11 +42,10 @@ include("dbconnect.php");
       <!-- calendar file css -->
       <link rel="stylesheet" href="js/semantic.min.css" />
        <link rel="stylesheet" href="style2.css" />
-      <!--[if lt IE 9]>
+      
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-          <style type="text/css">
+           <style type="text/css">
 input.search-query {
     padding-left:26px;
 }
@@ -144,7 +143,7 @@ form.form-search:before {
                               </ul>
                               <ul class="user_profile_dd">
                                  <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta.png" alt="#" /><span class="name_user">
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta1.png" alt="#" /><span class="name_user">
                                         <?=$_SESSION["nomPrenom"]?>
                                         </span></a>
                                     <div class="dropdown-menu">
@@ -175,24 +174,67 @@ form.form-search:before {
             <div class="movie-list-container">
                 <h1 class="movie-list-title">Tendance</h1>
                 <div class="movie-list-wrapper">
-<?php 
-          $contenutitles = $conn->query('SELECT * FROM titles ORDER BY Start_year Desc LIMIT 8;');
-
-    while($ligne = $contenutitles->fetch()){
-
-        echo '<div class="movie-list">
+                    <div class="movie-list">
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/8.jpg" alt="">
-                            <span class="movie-list-item-title">';
-          echo $ligne['Title'];
-        echo '</span><p class="movie-list-item-desc">';
-          echo $ligne['Langue'];
-        echo '</p>
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                             </p>
                             <button class="movie-list-item-button">Watch</button>
-                        </div>';
-         
-       } ?>
-                    
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/6.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/7.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                       <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                    </div>
+                    <i class="fa fa-chevron-right arrow"></i>
+                </div>
+            </div>
             <div class="movie-list-container">
                 <h1 class="movie-list-title">nouveauté</h1>
                 <div class="movie-list-wrapper">
