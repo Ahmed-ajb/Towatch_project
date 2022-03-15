@@ -40,6 +40,8 @@
 .movie-list-wrapper {
   position: relative;
   overflow: hidden;
+   margin: -40px -35px;
+
 }
 
 .movie-list {
@@ -51,7 +53,7 @@
 }
 
 .movie-list-item {
-  margin-right: 30px;
+  margin-right: 15px;
   position: relative;
 }
 
