@@ -78,12 +78,12 @@
 }
 
 .movie-list-item-title {
-  background-color: floralwhite;
+  background-color: whitesmoke;
   padding: 0 10px;
-  font-size: 32px;
+  font-size: 18px;
   font-weight: bold;
   position: absolute;
-  top: 10%;
+  top: 15%;
   left: 50px;
   opacity: 0;
   transition: 1s all ease-in-out;
@@ -91,14 +91,15 @@
 
 .movie-list-item-desc {
   background-color: whitesmoke;
-  padding: 10px;
-  font-size: 14px;
+  padding: 2px;
+  font-size: 10px;
   position: absolute;
-  top: 30%;
+  top: 28%;
   left: 50px;
   width: 230px;
   opacity: 0;
   transition: 1s all ease-in-out;
+
 }
 
 .movie-list-item-button {
@@ -110,8 +111,8 @@
   border: none;
   cursor: pointer;
   position: absolute;
-  bottom: 20px;
-  left: 50px;
+  bottom: 3px;
+  left: 200px;
   opacity: 0;
   transition: 1s all ease-in-out;
 }
