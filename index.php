@@ -176,7 +176,7 @@ form.form-search:before {
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <?php
-          $contenutitles = $conn->query('SELECT * FROM titles ORDER BY Start_year Desc LIMIT 8;');
+          $contenutitles = $conn->query('SELECT * FROM titles ORDER BY release_date Desc LIMIT 8;');
 
     while($ligne = $contenutitles->fetch())  {
       $nbr = 0 + 1 ;
@@ -186,7 +186,7 @@ form.form-search:before {
                             <span class="movie-list-item-title">';
           echo $ligne['Title'];
         echo '</span><p class="movie-list-item-desc">';
-          echo $ligne['Langue'];
+          echo $ligne['release_date'];
         echo '</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>';

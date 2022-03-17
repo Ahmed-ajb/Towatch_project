@@ -1,10 +1,11 @@
 <?php
 session_start();
+include("dbconnect.php");
     if(@$_SESSION["autoriser"]!="oui"){
         header("location:login.php");
+
         exit();
-    }
-?>
+    } ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -37,6 +38,8 @@ session_start();
       <link rel="stylesheet" href="css/custom.css" />
       <!-- calendar file css -->
       <link rel="stylesheet" href="js/semantic.min.css" />
+             <link rel="stylesheet" href="style2.css" />
+
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -161,8 +164,61 @@ form.form-search:before {
                               <h2><form class="form-search form-inline"><input type="text" class="search-query"placeholder="Chercher dans ta Watchlist ..." /></form> </h2>
 
                            </div>
+                           <div class="movie-list-container">
+                <h1 class="movie-list-title">films que vous aimez</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <?php
+          $contenutitles = $conn->query('SELECT * FROM titles LIMIT 8;');
+
+    while($ligne = $contenutitles->fetch())  {
+      $nbr = 0 + 1 ;
+        echo '
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
+                            <span class="movie-list-item-title">';
+          echo $ligne['Title'];
+        echo '</span><p class="movie-list-item-desc">';
+          echo $ligne['Langue'];
+        echo '</p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>';
+         
+       } ?>
+                        
+                    </div>
+                    <i class="fa fa-chevron-right arrow"></i>
+                </div>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">series que vous aimez</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <?php
+          $contenutitles = $conn->query('SELECT * FROM titles ORDER BY Start_year Desc LIMIT 8;');
+
+    while($ligne = $contenutitles->fetch())  {
+      $nbr = 0 + 1 ;
+        echo '
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
+                            <span class="movie-list-item-title">';
+          echo $ligne['Title'];
+        echo '</span><p class="movie-list-item-desc">';
+          echo $ligne['Langue'];
+        echo '</p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>';
+         
+       } ?>
+                        
+                    </div>
+                    <i class="fa fa-chevron-right arrow"></i>
+                </div>
+            </div>
                         </div>
                      </div>
+
 
                      <!-- footer -->
                      <div class="container-fluid">
@@ -173,7 +229,10 @@ form.form-search:before {
                         </div>
                      </div>
                   </div>
-                  <!-- end dashboard inner -->
+                  <!-- JS -->
+                   <script src="app.js"></script>
+
+                  <!----------------------------- >
                </div>
             </div>
          </div>
