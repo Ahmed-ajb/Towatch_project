@@ -46,27 +46,49 @@ include("dbconnect.php");
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
            <style type="text/css">
-input.search-query {
-    padding-left:26px;
-}
+.searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+    }
 
-form.form-search {
-    position: relative;
-}
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    }
 
-form.form-search:before {
-    content:'';
-    display: block;
-    width: 14px;
-    height: 14px;
-    background-image: url(http://getbootstrap.com/2.3.2/assets/img/glyphicons-halflings.png);
-    background-position: -48px 0;
-    position: absolute;
-    top:8px;
-    left:8px;
-    opacity: .5;
-    z-index: 1000;
-}
+    .searchbar:hover > .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+    }
+
+    .searchbar:hover > .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    }
 </style>
    </head>
    <body class="inner_page widgets">
@@ -165,11 +187,23 @@ form.form-search:before {
                   <div class="container-fluid">
                      <div class="row column_title">
                         <div class="col-md-12">
-                          
+                          <div class="page_title">
+                             <!--search barre -->
+      <div class="d-flex justify-content-lefter h-100">
+        <div class="searchbar">
+          <input class="search_input" type="text" name="" placeholder="Search...">
+          <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
+        </div>
+    </div>
+                             <!--  -->
+
+
+
+                           </div>
                         </div>
                      </div>
                      <!--------------------scroll film ------------------------------------------>
- <div class="page_title"><h2><form class="form-search form-inline"><input type="text" class="search-query"placeholder="Chercher ... ToWatcher ..." /></form> </h2> </div>
+                           
 
             <div class="movie-list-container">
                 <h1 class="movie-list-title">nouveautés</h1>
