@@ -40,7 +40,7 @@
     </div>
     <div class="container__child signup__form">
       
-      <form action="#">
+      <form action="inscription.php" method="POST">
         <div class="form-group" style="position: relative; top: 16px">
           <label for="username">Nom et Prénom</label>
           <input class="form-control" type="text" name="username" id="username" placeholder="Votre Nom et Prénom" style="position: relative; top: 23px; left: -117px"required />
@@ -67,7 +67,7 @@
     </div>
           <div class="form-group" style="position: relative; top: 159px ">
      <label class="label_field"  style="position: relative; top: 12px">Profession</label>
-     <select  name="profession"  style="position: relative; top: 39px; left: -86px">
+     <select  name="profession" id="prof" style="position: relative; top: 39px; left: -86px">
   <option value="ADM">Administrateur</option>
   <option value="ART">Artiste</option>
   <option value="MED">Médecin</option>
@@ -292,7 +292,7 @@
               <input class="btn btn--form" type="submit" value="Inscrire" />
             </li>
             <li style="position: relative; bottom: -328px; left: 50px">
-              <a class="signup__link" href="login.html">Vous avez déjà un compte?</a>
+              <a class="signup__link" href="login.php">Vous avez déjà un compte?</a>
             </li>
           </ul>
         </div>

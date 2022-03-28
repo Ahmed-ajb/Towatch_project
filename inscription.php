@@ -4,12 +4,14 @@
   include "dbconnect.php";
 
  
-    $nom=$_POST['nom'];
-    $prenom=$_POST['prenom'];
+    $nom=$_POST['username'];
+    $prenom=$_POST['username'];
     $sexe=$_POST['sexe'];
-    $date=$_POST['date'];
+    $date=$_POST['Date'];
     $pays=$_POST['pays'];
     $tel=$_POST['phone'];
+    $prof=$_POST['profession'];
+
     $email=strtolower($_POST['email']);
     $password=$_POST['password'];
     $ville=$_POST['ville'];
@@ -24,8 +26,8 @@
  
  
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$sql = "INSERT INTO utilisateurs (Nom_user,Prenom_user,Email,Password,Sexe,Date_naissance,Pays,Ville,Num_tel)
-VALUES ('$nom','$prenom','$email','$password','$sexe','$date','$pays','$ville','$tel')";
+$sql = "INSERT INTO utilisateurs (Nom_user,Prenom_user,Email,Password,Occupation,Sexe,Date_naissance,Pays,Ville,Num_tel)
+VALUES ('$nom','$prenom','$email','$password','$prof','$sexe','$date','$pays','$ville','$tel')";
  
 $conn->exec($sql);
 echo "<script>alert('Account successfully added!'); window.location='Login.html'</script>";}
