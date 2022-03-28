@@ -13,6 +13,7 @@
 
 
 
+
 /*------------------------------------------------------------------
     [Table of contents]
 
@@ -232,7 +233,7 @@ ul {
 }
 
 
-
+/*--
 a.btn {
     min-width: 170px;
     height: 40px;
@@ -246,7 +247,7 @@ a.btn {
     text-transform: uppercase;
     margin-top: 10px;
 }
-
+--*/
 
 .red_bg {
     background: #ff4748;
@@ -928,7 +929,7 @@ a[data-toggle="collapse"] {
 .page_title {
     background: #fff;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     padding: 25px 35px 22px 38px;
     box-shadow: 1px 0 5px rgba(0, 0, 0, 0.1);
     margin-left: -40px;
@@ -1566,7 +1567,7 @@ a[data-toggle="collapse"] {
 }
 
 #testimonial_slider.carousel .item {
-    color: #333;
+    color: #999;
     font-size: 14px;
     text-align: center;
     overflow: hidden;
@@ -1749,10 +1750,10 @@ a[data-toggle="collapse"] {
 }
 
 .main_bt {
-    min-width: 125px;
+    min-width: 128px;
     height: auto;
     float: left;
-    background: #1ed085;
+    background: #111;
     text-align: center;
     color: #fff;
     padding: 10px 25px;
@@ -1762,6 +1763,8 @@ a[data-toggle="collapse"] {
     transition: ease all 0.5s;
     cursor: pointer;
     font-weight: 300;
+    position: relative;
+    right: -71px;
 }
 
 button.main_bt {
@@ -3289,14 +3292,16 @@ table.projects tr td:first-child {
 }
 
 .logo_login::after {
-    content: "";
+       content: "";
     display: block;
     width: 100%;
-    height: 100%;
+    height: 102%;
     position: absolute;
     background: rgba(21, 40, 60, .8);
     top: 0px;
     left: 0;
+    background: url(images/logo/cinema2.jpeg);
+    filter: blur(2px);
 }
 
 .logo_login div {
@@ -3373,6 +3378,7 @@ table.projects tr td:first-child {
     position: relative;
     left: 0;
     color: #ff5722;
+     text-decoration: underline;
 }
 
 
@@ -3412,173 +3418,15 @@ table.projects tr td:first-child {
 }
 
 
-/*------------------------------------------------------------------*/
-    .container {
-  background-color: #151515;
-  min-height: calc(100vh - 50px);
-  color: white;
-}
-
-.content-container {
-  margin-left: 50px;
-}
-
-.featured-content {
-  height: 50vh;
-  padding: 50px;
-}
-
-.featured-title {
-  width: 200px;
-}
-
-.featured-desc {
-  width: 500px;
-  color: lightgray;
-  margin: 30px 0;
-}
-
-.featured-button {
-  background-color: #4dbf00;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  font-weight: bold;
-}
-
-.movie-list-container {
-  padding: 0 20px;
-}
-
-.movie-list-wrapper {
-  position: relative;
-  overflow: hidden;
-}
-
-.movie-list {
-  display: flex;
-  align-items: center;
-  height: 300px;
-  transform: translateX(0);
-  transition: all 1s ease-in-out;
-}
-
-.movie-list-item {
-  margin-right: 30px;
-  position: relative;
-}
-
-.movie-list-item:hover .movie-list-item-img {
-  transform: scale(1.2);
-  margin: 0 30px;
-  opacity: 0.5;
-}
-
-.movie-list-item:hover .movie-list-item-title,
-.movie-list-item:hover .movie-list-item-desc,
-.movie-list-item:hover .movie-list-item-button {
-  opacity: 1;
-}
-
-.movie-list-item-img {
-  transition: all 1s ease-in-out;
-  width: 270px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.movie-list-item-title {
-  background-color: #333;
-  padding: 0 10px;
-  font-size: 32px;
-  font-weight: bold;
-  position: absolute;
-  top: 10%;
-  left: 50px;
-  opacity: 0;
-  transition: 1s all ease-in-out;
-}
-
-.movie-list-item-desc {
-  background-color: #333;
-  padding: 10px;
-  font-size: 14px;
-  position: absolute;
-  top: 30%;
-  left: 50px;
-  width: 230px;
-  opacity: 0;
-  transition: 1s all ease-in-out;
-}
-
-.movie-list-item-button {
-  padding: 10px;
-  background-color: #4dbf00;
-  color: white;
-  border-radius: 10px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  bottom: 20px;
-  left: 50px;
-  opacity: 0;
-  transition: 1s all ease-in-out;
-}
-
-.arrow {
-  font-size: 120px;
-  position: absolute;
-  top: 90px;
-  right: 0;
-  color: lightgray;
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.container.active {
-  background-color: white;
-}
-
-.movie-list-title.active {
-  color: black;
-}
-
-.navbar-container.active {
-  background-color: white;
-
-  color: black;
-}
-
-.sidebar.active{
-    background-color: white;
-}
-
-.left-menu-icon.active{
-    color: black;
-}
-
-.toggle.active{
-    background-color: black;
-}
-
-.toggle-ball.active{
-    background-color: white;
-    transform: translateX(-20px);
-}
-
-@media only screen and (max-width: 940px){
-    .menu-container{
-        display: none;
-    }
-}
-/*-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+    27. Map
+-------------------------------------------------------------------*/
 
 #map {
     height: 100%;
     min-height: 720px;
 }
-
+body{
+    background-image: url('photofilm.jpg') ;
+    
+}
