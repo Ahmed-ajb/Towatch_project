@@ -200,9 +200,13 @@ include("dbconnect.php");
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <?php
-                         
-          $contenutitles = $conn->query('SELECT Title,release_date FROM notes
-INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 ;');
+                          $res=$conn->prepare("SELECT Title,release_date FROM notes
+INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 and notes.Id_user= ? ;");
+        $res->setFetchMode(PDO::FETCH_ASSOC);
+        $res->execute(array($_SESSION["email"]));
+        $tab=$res->fetchAll();
+         /* $contenutitles = $conn->query('SELECT Title,release_date FROM notes
+INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 ;');*/
 
     while($ligne = $contenutitles->fetch())  {
       $nbr = 0 + 1 ;
