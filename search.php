@@ -169,18 +169,20 @@ form.form-search:before {
                         </div>
                      </div>
                      <!--------------------scroll film ------------------------------------------>
- <div class="page_title"><h2><form class="form-search form-inline"><input type="text" class="search-query"placeholder="Chercher ... ToWatcher ..." /></form> </h2> </div>
-
+ 
             <div class="movie-list-container">
-                <h1 class="movie-list-title">nouveautés</h1>
+                <h1 class="movie-list-title">Resulat de votre recherche : </h1>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
-                        <?php
-          $contenutitles = $conn->query('SELECT * FROM titles ORDER BY release_date Desc LIMIT 8;');
+                      <?php
 
-    while($ligne = $contenutitles->fetch())  {
-      $nbr = 0 + 1 ;
-        echo '
+   $str = $_POST["search"];
+   $res=$conn->prepare("SELECT * FROM Titles WHERE title = :str ;");
+         $id='1';
+         $res->execute(array(':str' => $str ));
+        $res->setFetchMode(PDO::FETCH_ASSOC);
+        foreach ($res as $ligne) {
+            echo '
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
                             <span class="movie-list-item-title">';
@@ -191,51 +193,27 @@ form.form-search:before {
                             <button class="movie-list-item-button">Watch</button>
                         </div>';
          
-       } ?>
+        }
+?>
                         
                     </div>
                     <i class="fa fa-chevron-right arrow"></i>
                 </div>
             </div>
-            <div class="movie-list-container">
-                <h1 class="movie-list-title">Tendance</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                         <?php
-          $contenutitles = $conn->query('SELECT * FROM titles ORDER BY compteur Desc LIMIT 8;');
-
-    while($ligne = $contenutitles->fetch())  {
-      $nbr = 0 + 1 ;
-        echo '
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
-                            <span class="movie-list-item-title">';
-          echo $ligne['Title'];
-        echo '</span><p class="movie-list-item-desc">';
-          echo $ligne['Langue'];
-        echo '</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>';
-         
-       } ?>
-
-                    </div>
-                    <i class="fa fa-chevron-right arrow"></i>
-                </div>
-            </div>
+            
             
                      <!------------------- java script -------------------------------------------->
 
  <script src="app.js"></script>
                      <!----------------------------------------------------------------->
-                    
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                   <!-- footer -->
-                  <div class="container-fluid">
+                  <footer><div class="container-fluid">
                      <div class="footer">
                         <p>Copyright © 2022 ToWatch All rights reserved.<br><br>
                            Distributed By: test
                         </p>
-                     </div>
+                     </div></footer>
                   </div>
                </div>
                <!-- end dashboard inner -->

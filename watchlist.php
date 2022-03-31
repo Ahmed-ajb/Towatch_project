@@ -185,8 +185,8 @@ include("dbconnect.php");
                            <div class="page_title">
                              <!--search barre -->
       <div class="d-flex justify-content-lefter h-100">
-        <form action="search.php" method="GET"><div class="searchbar">
-          <input id="search" class="search_input" type="text" name="" placeholder="Search...">
+        <form action="search.php" method="POST"><div class="searchbar">
+          <input id="search" class="search_input" type="text" name="search" placeholder="Search...">
           <i class="fa fa-search" class="search_icon"></i>
         </div></form>
     </div>
@@ -200,17 +200,13 @@ include("dbconnect.php");
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <?php
-                          $res=$conn->prepare("SELECT Title,release_date FROM notes
-INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 and notes.Id_user= ? ;");
+         $res=$conn->prepare("SELECT Title,release_date FROM notes
+INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = :id ;");
+         $id='1';
+         $res->execute(array(':id' => $id ));
         $res->setFetchMode(PDO::FETCH_ASSOC);
-        $res->execute(array($_SESSION["email"]));
-        $tab=$res->fetchAll();
-         /* $contenutitles = $conn->query('SELECT Title,release_date FROM notes
-INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 ;');*/
-
-    while($ligne = $contenutitles->fetch())  {
-      $nbr = 0 + 1 ;
-        echo '
+        foreach ($res as $ligne) {
+            echo '
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
                             <span class="movie-list-item-title">';
@@ -221,7 +217,8 @@ INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 ;');*
                             <button class="movie-list-item-button">Watch</button>
                         </div>';
          
-       } ?>
+        }
+      ?>
                         
                     </div>
                     <i class="fa fa-chevron-right arrow"></i>
@@ -232,11 +229,10 @@ INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 ;');*
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                          <?php
-          $contenutitles = $conn->query('SELECT * FROM titles ORDER BY release_date Desc LIMIT 8;');
-
-    while($ligne = $contenutitles->fetch())  {
-      $nbr = 0 + 1 ;
-        echo '
+                          $res=$conn->query("SELECT * FROM titles ORDER BY release_date Desc LIMIT 8;");
+        $res->setFetchMode(PDO::FETCH_ASSOC);
+        foreach ($res as $ligne) {
+            echo '
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
                             <span class="movie-list-item-title">';

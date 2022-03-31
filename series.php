@@ -184,10 +184,10 @@ session_start();
                            <div class="page_title">
                                 <!--search barre -->
       <div class="d-flex justify-content-lefter h-100">
-        <div class="searchbar">
-          <input class="search_input" type="text" name="" placeholder="Search...">
-          <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
-        </div>
+        <form action="search.php" method="POST"><div class="searchbar">
+          <input id="search" class="search_input" type="text" name="search" placeholder="Search...">
+          <i class="fa fa-search" class="search_icon"></i>
+        </div></form>
     </div>
                              <!--  -->
 
