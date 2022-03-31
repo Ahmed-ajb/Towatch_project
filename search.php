@@ -169,7 +169,7 @@ form.form-search:before {
                         </div>
                      </div>
                      <!--------------------scroll film ------------------------------------------>
- 
+ <br><br><br><br><br><br><br><br>
             <div class="movie-list-container">
                 <h1 class="movie-list-title">Resulat de votre recherche : </h1>
                 <div class="movie-list-wrapper">
@@ -206,7 +206,7 @@ form.form-search:before {
 
  <script src="app.js"></script>
                      <!----------------------------------------------------------------->
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br>
                   <!-- footer -->
                   <footer><div class="container-fluid">
                      <div class="footer">
