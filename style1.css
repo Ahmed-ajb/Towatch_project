@@ -24,9 +24,9 @@ a,
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width:42%;
   height: 100%;
-  background-color: rgba(0,0,0,.76);
+background: url(images/logo/cinema.jpeg);
 }
 .container__child {
   width: 50%;
