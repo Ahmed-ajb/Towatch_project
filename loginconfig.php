@@ -18,6 +18,7 @@
           $_SESSION["autoriser"]="oui";
           $_SESSION["nomPrenom"]=strtoupper($tab[0]["Nom_user"]." ".$tab[0]["Prenom_user"]);
           $_SESSION["email"]=["email"];
+          $_SESSION["id"]=["Id_user"];
           header("location:index.php");
 
         }

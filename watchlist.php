@@ -200,9 +200,8 @@ include("dbconnect.php");
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <?php
-         $res=$conn->prepare("SELECT Title,release_date FROM notes
-INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = :id ;");
-         $id='1';
+         $res=$conn->prepare("SELECT * FROM notes,utilsateur,titles WHERE utilisateurs.Id_user = :id AND titles.Id_title = notes.Id_title AND  notes.Etat = 1 ;");
+         $id=$_SESSION["id"];
          $res->execute(array(':id' => $id ));
         $res->setFetchMode(PDO::FETCH_ASSOC);
         foreach ($res as $ligne) {

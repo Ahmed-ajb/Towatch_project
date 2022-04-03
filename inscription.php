@@ -4,10 +4,10 @@
   include "dbconnect.php";
 
  
-    $nom=$_POST['username'];
-    $prenom=$_POST['username'];
+    $nom=$_POST['nom'];
+    $prenom=$_POST['prenom'];
     $sexe=$_POST['sexe'];
-    $date=$_POST['Date'];
+    $date=$_POST['date'];
     $pays=$_POST['pays'];
     $tel=$_POST['phone'];
     $prof=$_POST['profession'];
@@ -30,7 +30,7 @@ $sql = "INSERT INTO utilisateurs (Nom_user,Prenom_user,Email,Password,Occupation
 VALUES ('$nom','$prenom','$email','$password','$prof','$sexe','$date','$pays','$ville','$tel')";
  
 $conn->exec($sql);
-echo "<script>alert('Account successfully added!'); window.location='Login.html'</script>";}
+echo "<script>alert('Account successfully added!'); window.location='login.php'</script>";}
 ?>
         
     

@@ -69,7 +69,6 @@
     <label class="label_field">* Mot de passe</label>
    <input type="Password" required="required" name="password" placeholder="Mot de passe" />
 </div>
- 
    <div class="field">
    <label class="label_field" style=" width: 100px; line-height: 20px; text-align: right; height: 35px;">* Date de Naissance</label>
    <input type="Date" name="date" required="required" placeholder=" Date de naissance" />
@@ -80,8 +79,32 @@
    <option value="H">Homme</option>
    <option value="F">Femme</option>
     <option value="G">Autre</option>
-   </select>
+   </select><label class="label_field">* occupation</label><select  name="profession">
+  <option value="ADM">Administrateur</option>
+  <option value="ART">Artiste</option>
+  <option value="MED">Médecin</option>
+  <option value="EDU">Educateur</option>
+  <option value="ING">Ingénieur</option>
+  <option value="DIV">Divertissement</option>
+  <option value="EXE">Exécutif</option>
+  <option value="SAN">Santé</option>
+  <option value="MEN">Ménagere</option>
+  <option value="AVO">Avocat</option>
+  <option value="BIB">Bibliothécaire</option>
+  <option value="MAR">Marketing</option>
+  <option value="PRO">Programmeur</option>
+  <option value="RET">Retraité</option>
+  <option value="VEN">Vendeur</option>
+  <option value="SAV">Savant</option>
+  <option value="ETU">Etudiant</option>
+  <option value="TEC">Technicien</option>
+  <option value="ECR">Ecrivain</option>
+  <option value="AUT">Autre</option>
+  <option value="AUC">Aucun</option>
+  </select>
 </div>
+
+
 
 <div class="field">
 
