@@ -13,12 +13,9 @@
           echo "<script>alert('Mauvais login ou mot de passe!'); window.location='login.php'</script>";
             // echo "<a href='login.php'>try again</a>";
         else{
-
-
           $_SESSION["autoriser"]="oui";
           $_SESSION["nomPrenom"]=strtoupper($tab[0]["Nom_user"]." ".$tab[0]["Prenom_user"]);
-          $_SESSION["email"]=["email"];
-          $_SESSION["id"]=["Id_user"];
+          $_SESSION["id"]= ["Id_user"];
           header("location:index.php");
 
         }

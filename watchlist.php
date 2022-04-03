@@ -106,7 +106,7 @@ include("dbconnect.php");
                      <div class="user_profle_side">
                         <div class="user_img"><img class="img-responsive" src="images/layout_img/insta.png" alt="#" /></div>
                         <div class="user_info">
-                           <h6>ToWatcher</</h6>
+                           <h6><?=$_SESSION["nomPrenom"]?></h6>
                            <p><span class="online_animation"></span> En Ligne</p>
                         </div>
                      </div>
@@ -162,7 +162,7 @@ include("dbconnect.php");
                               </ul>
                               <ul class="user_profile_dd">
                                  <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta.png" alt="#" /><span class="name_user">ToWatcher</</span></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta.png" alt="#" /><span class="name_user"><?=$_SESSION["nomPrenom"]?></span></a>
                                     <div class="dropdown-menu">
                                        <a class="dropdown-item" href="profile.php">My Profile</a>
                                        <a class="dropdown-item" href="settings.php">Settings</a>
@@ -200,9 +200,10 @@ include("dbconnect.php");
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <?php
-         $res=$conn->prepare("SELECT * FROM notes,utilsateur,titles WHERE utilisateurs.Id_user = :id AND titles.Id_title = notes.Id_title AND  notes.Etat = 1 ;");
-         $id=$_SESSION["id"];
-         $res->execute(array(':id' => $id ));
+         $res=$conn->prepare("SELECT * FROM notes
+INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 AND notes.Id_user = :id ;");
+        // $id = ($_SESSION["id"]) ;
+         $res->execute(array(':id' => ($_SESSION["id"])));
         $res->setFetchMode(PDO::FETCH_ASSOC);
         foreach ($res as $ligne) {
             echo '
