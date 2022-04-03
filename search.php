@@ -169,9 +169,9 @@ form.form-search:before {
                         </div>
                      </div>
                      <!--------------------scroll film ------------------------------------------>
- <br><br><br><br><br><br><br><br>
+ 
             <div class="movie-list-container">
-                <h1 class="movie-list-title">Resulat de votre recherche : </h1>
+                <h1 class="movie-list-title">Resulat de votre recherche : </h1><br><br><br><br><br><br><br><br>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                       <?php
