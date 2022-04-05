@@ -1,7 +1,7 @@
 <?php
 
 $tab = array();
-$fichier = fopen("BD/fichierstxt/ratings.txt", "r"); //on ouvre le fichier en lecture
+$fichier = fopen("ratings.txt", "r"); //on ouvre le fichier en lecture
 $i=0;
 
 while(!feof($fichier))
