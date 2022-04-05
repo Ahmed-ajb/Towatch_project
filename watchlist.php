@@ -201,16 +201,16 @@ include("dbconnect.php");
                     <div class="movie-list">
                         <?php
          $res=$conn->prepare("SELECT * FROM notes
-INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 AND notes.Id_user = :id ;");
-        // $id = ($_SESSION["id"]) ;
-         $res->execute(array(':id' => ($_SESSION["id"])));
+INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = :etat AND notes.Id_user = :id;");
+         $id = ($_SESSION['id']) ;
+         $res->execute([':etat' => 1 , ':id' => $id]);
         $res->setFetchMode(PDO::FETCH_ASSOC);
         foreach ($res as $ligne) {
             echo '
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
                             <span class="movie-list-item-title">';
-          echo $ligne['Title'];
+          echo $id;
         echo '</span><p class="movie-list-item-desc">';
           echo $ligne['release_date'];
         echo '</p>
