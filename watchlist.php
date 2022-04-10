@@ -106,7 +106,7 @@ include("dbconnect.php");
                      <div class="user_profle_side">
                         <div class="user_img"><img class="img-responsive" src="images/layout_img/insta.png" alt="#" /></div>
                         <div class="user_info">
-                           <h6>ToWatcher</</h6>
+                           <h6><?=$_SESSION["nomPrenom"]?></h6>
                            <p><span class="online_animation"></span> En Ligne</p>
                         </div>
                      </div>
@@ -162,7 +162,7 @@ include("dbconnect.php");
                               </ul>
                               <ul class="user_profile_dd">
                                  <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta.png" alt="#" /><span class="name_user">ToWatcher</</span></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta.png" alt="#" /><span class="name_user"><?=$_SESSION["nomPrenom"]?></span></a>
                                     <div class="dropdown-menu">
                                        <a class="dropdown-item" href="profile.php">My Profile</a>
                                        <a class="dropdown-item" href="settings.php">Settings</a>
@@ -185,8 +185,8 @@ include("dbconnect.php");
                            <div class="page_title">
                              <!--search barre -->
       <div class="d-flex justify-content-lefter h-100">
-        <form action="search.php" method="GET"><div class="searchbar">
-          <input id="search" class="search_input" type="text" name="" placeholder="Search...">
+        <form action="search.php" method="POST"><div class="searchbar">
+          <input id="search" class="search_input" type="text" name="search" placeholder="Search...">
           <i class="fa fa-search" class="search_icon"></i>
         </div></form>
     </div>
@@ -200,28 +200,25 @@ include("dbconnect.php");
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <?php
-                          $res=$conn->prepare("SELECT Title,release_date FROM notes
-INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 and notes.Id_user= ? ;");
+         $res=$conn->prepare("SELECT * FROM notes
+INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = :etat AND notes.Id_user = :id;");
+         $id = ($_SESSION['id']) ;
+         $res->execute([':etat' => 1 , ':id' => $id]);
         $res->setFetchMode(PDO::FETCH_ASSOC);
-        $res->execute(array($_SESSION["email"]));
-        $tab=$res->fetchAll();
-         /* $contenutitles = $conn->query('SELECT Title,release_date FROM notes
-INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 ;');*/
-
-    while($ligne = $contenutitles->fetch())  {
-      $nbr = 0 + 1 ;
-        echo '
+        foreach ($res as $ligne) {
+            echo '
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
                             <span class="movie-list-item-title">';
-          echo $ligne['Title'];
+          echo $id;
         echo '</span><p class="movie-list-item-desc">';
           echo $ligne['release_date'];
         echo '</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>';
          
-       } ?>
+        }
+      ?>
                         
                     </div>
                     <i class="fa fa-chevron-right arrow"></i>
@@ -232,11 +229,10 @@ INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = 1 ;');*
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                          <?php
-          $contenutitles = $conn->query('SELECT * FROM titles ORDER BY release_date Desc LIMIT 8;');
-
-    while($ligne = $contenutitles->fetch())  {
-      $nbr = 0 + 1 ;
-        echo '
+                          $res=$conn->query("SELECT * FROM titles ORDER BY release_date Desc LIMIT 8;");
+        $res->setFetchMode(PDO::FETCH_ASSOC);
+        foreach ($res as $ligne) {
+            echo '
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
                             <span class="movie-list-item-title">';
