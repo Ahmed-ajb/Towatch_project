@@ -4,8 +4,8 @@
   include "dbconnect.php";
 
  
-    $nom=$_POST['username'];
-    $prenom=$_POST['username'];
+    $nom=$_POST['nom'];
+    $prenom=$_POST['prenom'];
     $sexe=$_POST['sexe'];
     $date=$_POST['Date'];
     $pays=$_POST['pays'];
