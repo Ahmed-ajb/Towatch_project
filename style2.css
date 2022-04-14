@@ -115,6 +115,11 @@
   left: 200px;
   opacity: 0;
   transition: 1s all ease-in-out;
+  position: relative;
+top:-50px;
+left:80px;
+
+
 }
 
 .arrow {
@@ -162,4 +167,33 @@
     .menu-container{
         display: none;
     }
+}
+[id='toggle-heart'] {
+  position: absolute;
+  left: -100vw;
+}
+[for='toggle-heart'] {
+  color: #aab8c2;
+}
+
+[id='toggle-heart']:checked + label {
+  color: #e2264d;
+}
+[for='toggle-heart'] {
+  font-size: 2em;
+  cursor: pointer;
+}body {
+  display: flex;
+  justify-content: center; 
+  margin: 0;
+  height: 100vh; 
+}
+[for='toggle-heart'] { 
+  align-self: center; 
+}
+@keyframes heart { 0%, 17.5% { font-size: 0; } }
+
+[id='toggle-heart']:checked + label {
+  will-change: font-size;
+  animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
 }
