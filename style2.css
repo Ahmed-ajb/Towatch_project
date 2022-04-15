@@ -197,3 +197,19 @@ left:80px;
   will-change: font-size;
   animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
 }
+.rating {
+   direction: rtl;
+}
+.rating a {
+   color: #aaa;
+   text-decoration: none;
+   font-size: 3em;
+   transition: color .4s;
+}
+.rating a:hover,
+.rating a:focus,
+.rating a:hover ~ a,
+.rating a:focus ~ a {
+   color: orange;
+   cursor: pointer;
+}

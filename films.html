@@ -88,6 +88,14 @@ session_start();
     color:white;
     text-decoration:none;
     }
+        .star {
+            font-size: 1.5rem;
+        }
+        
+        .hover {
+            color: rgb(255, 196, 0);
+        }
+    </style>
 </style>
    </head>
    <body class="inner_page tables_page">
@@ -206,19 +214,84 @@ session_start();
                             <span class="movie-list-item-title">her</span>
                             <p class="movie-list-item-desc">
                                 <h>Note  : </h>
-                               <a href="#1" title="Give 1 star">☆</a>
-                                <a href="#2" title="Give 2 stars">☆</a>
-                                <a href="#3" title="Give 3 stars">☆</a>
-                                <a href="#4" title="Give 4 stars">☆</a>
-                                <a href="#5" title="Give 5 stars">☆</a>
+      <?php
+if (isset ($_GET['id'])&&isset ($_GET['stars'])){
+                $id_user = $_SESSION['id'];
+                $id_title= $_GET['id'];
+                $Note = $_GET['stars'];
+                $addnote = $bdd->prepare("INSERT INTO `notes` VALUES ('', ?, ?, ?)");
+                $addnote->execute(array($id_user, $id_title, $note));   
+}
+?>
+         <i id ="star_1" href="&stars=1?id=<?php echo $_GET['id'] ?>" class="star" data-note="1">&#9733;</i>
+    <i id ="star_2" href="&stars=2?id=<?php echo $_GET['id'] ?>" class="star" data-note="2">&#9733;</i>
+    <i id ="star_3" href="&stars=3?id=<?php echo $_GET['id'] ?>"class="star" data-note="3">&#9733;</i>
+    <i  id ="star_4" href="&stars=4?id=<?php echo $_GET['id'] ?>" class="star" data-note="4">&#9733;</i>
+    <i id ="star_5" href="&stars=5?id=<?php echo $_GET['id'] ?>" class="star" data-note="5">&#9733;</i>
+    <i class="note">Note:</i>
+    <script>
+        const stars = document.querySelectorAll('.star');
+        let check = false;
+        stars.forEach(star => {
+            star.addEventListener('mouseover', selectStars);
+            star.addEventListener('mouseleave', unselectStars);
+            star.addEventListener('click', activeSelect);
+        })
+
+        function selectStars(e) {
+            const data = e.target;
+            const etoiles = priviousSiblings(data);
+            if (!check) {
+                etoiles.forEach(etoile => {
+                    etoile.classList.add('hover');
+                })
+            }
+
+        }
+
+        function unselectStars(e) {
+            const data = e.target;
+            const etoiles = priviousSiblings(data);
+            if (!check) {
+                etoiles.forEach(etoile => {
+                    etoile.classList.remove('hover');
+                })
+            }
+        }
+
+        function activeSelect(e) {
+            if (!check) {
+                check = true;
+                document.querySelector('.note').innerHTML = 'Note ' + e.target.dataset.note;
+            }
+        }
+
+        function priviousSiblings(data) {
+            let values = [data];
+            while (data = data.previousSibling) {
+                if (data.nodeName === 'I') {
+                    values.push(data);
+                }
+            }
+            return values;
+        }
+
+    </script>
+  <? php
+    $star = 0;
+    if (isset)
+
+  }
+
                             </br>
                               <h>Add to watchlist  : </h>
                                 <input id="toggle-heart" type="checkbox" />
                                 <label for="toggle-heart">❤</label>
                                 </p>
                             <button class="movie-list-item-button">Watch</button>
-                            <button class="movie-list-item-button" >Review</button>
+                           
                         </div>
+
                    
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/2.jpg" alt="">
