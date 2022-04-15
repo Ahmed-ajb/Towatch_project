@@ -18,8 +18,8 @@ if( file_exists("ratings.txt")){
     $x = $split[0];
     $y = $split[1];
     $z = $split[2];
-   $cord= array("$x","$y","$z");
-    array_push($points,$cord);
+   $crd= array("$x","$y","$z");
+    array_push($points,$crd);
     
   }}
 
@@ -38,14 +38,29 @@ $clusters = $space->solve(5);
 // display the cluster centers and attached points
 foreach ($clusters as $num => $cluster) {
     $coordinates = $cluster->getCoordinates();
-    printf(
-        "Cluster %s [%d,%d]: %d points\n",
-        $num,
+
+    printf (
+      "Cluster %s [%d,%d]: %d points ==> \n ",
+        $num + 1,
         $coordinates[0],
         $coordinates[1],
-        count($cluster)
+        count($cluster),
     );
+foreach ($cluster as $point) {
+   // var_dump($point->toArray());
+    printf(
+        "[%d,%d,%d]  \t\n ",
+        $point[0],
+        $point[1],
+        $point[2]
+    );
+}   
 }
+
+
+
+
+
 
 
 // tri par bulle 
