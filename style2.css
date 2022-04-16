@@ -75,6 +75,8 @@
   height: 200px;
   object-fit: cover;
   border-radius: 20px;
+  position: relative;
+  top:16px;
 }
 
 .movie-list-item-title {
@@ -116,8 +118,8 @@
   opacity: 0;
   transition: 1s all ease-in-out;
   position: relative;
-top:-50px;
-left:80px;
+top:-20px;
+right:80px;
 
 
 }

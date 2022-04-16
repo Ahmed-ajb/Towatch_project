@@ -212,7 +212,7 @@ session_start();
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                                  <?php
-                          $res=$conn->query("SELECT  (Note,Etat) FROM notes ORDER BY release_date Desc LIMIT 8;");
+                          $res=$conn->query("SELECT  * FROM titles ORDER BY release_date Desc LIMIT 8;");
         $res->setFetchMode(PDO::FETCH_ASSOC);
         foreach ($res as $ligne) {
             echo '
