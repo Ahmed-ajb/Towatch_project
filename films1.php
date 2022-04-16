@@ -214,7 +214,7 @@ session_start();
                             <span class="movie-list-item-title">her</span>
                             <p class="movie-list-item-desc">
                                 <h>Note  : </h>
-      <?php
+    <!--  <?php
 if (isset ($_GET['id'])&&isset ($_GET['stars'])){
                 $id_user = $_SESSION['id'];
                 $id_title= $_GET['id'];
@@ -222,7 +222,7 @@ if (isset ($_GET['id'])&&isset ($_GET['stars'])){
                 $addnote = $bdd->prepare("INSERT INTO `notes` VALUES ('', ?, ?, ?)");
                 $addnote->execute(array($id_user, $id_title, $note));   
 }
-?>
+?>-->
          <i id ="star_1" href="&stars=1?id=<?php echo $_GET['id'] ?>" class="star" data-note="1">&#9733;</i>
     <i id ="star_2" href="&stars=2?id=<?php echo $_GET['id'] ?>" class="star" data-note="2">&#9733;</i>
     <i id ="star_3" href="&stars=3?id=<?php echo $_GET['id'] ?>"class="star" data-note="3">&#9733;</i>
@@ -277,11 +277,7 @@ if (isset ($_GET['id'])&&isset ($_GET['stars'])){
         }
 
     </script>
-  <? php
-    $star = 0;
-    if (isset)
 
-  }
 
                             </br>
                               <h>Add to watchlist  : </h>
