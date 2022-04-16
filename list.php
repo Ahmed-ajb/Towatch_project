@@ -230,9 +230,9 @@ session_start();
   <div class="row lead">
       <div id="stars" class="starrr"></div>
   </div>
-    </div>';
-            <i class="note">Note:</i>
-           
+    </div>
+            <i class="note">Note:</i>;'
+     <script>      
 $(".alert").addClass("in").fadeOut(3500);
 // starrr plugin (https://github.com/dobtco/starrr)
 var __slice = [].slice;
@@ -347,33 +347,28 @@ $( document ).ready(function() {
   });
   
 });
-         
+</script>
+         echo '
         
                                     </br>
-                                    if (isset($_POST["heart"])) {
-                                        $res=$conn->prepare("INSERT INTO notes WHERE Id_user = ? And id_film = ? VALUES(1)");
-                                    } else {    
-                                        $res=$conn->prepare("INSERT INTO notes WHERE Id_user = ? And id_film = ? VALUES(0)");
-                                    }
+                                 
                                       <h>Add to watchlist  : </h>
                                         <input id="toggle-heart" type="checkbox" name="heart"/>
                                         <label for="toggle-heart">❤</label>
                                         </p>
+                                        
                                     <button class="movie-list-item-button">Watch</button>
-                                   
+                                  
                                 </div>';
+                                if (isset($_POST["heart"])) {
+                                    $res=$conn->prepare("INSERT INTO notes WHERE Id_user = ? And id_film = ? VALUES(1)");
+                                } else {    
+                                    $res=$conn->prepare("INSERT INTO notes WHERE Id_user = ? And id_film = ? VALUES(0)");
+                                }
           echo $ligne['release_date'];
-        echo '</p>
-                                <h>Note  : </h>
-      <?php
-if (isset ($_GET['id'])&&isset ($_GET['stars'])){
-                $id_user = $_SESSION['id'];
-                $id_title= $_GET['id'];
-                $Note = $_GET['stars'];
-                $addnote = $bdd->prepare("INSERT INTO `notes` VALUES ('', ?, ?, ?)");
-                $addnote->execute(array($id_user, $id_title, $note));   
-}
-?>
+        
+                               
+ 
      
 
                    
