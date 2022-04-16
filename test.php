@@ -214,15 +214,7 @@ session_start();
                                  <?php
                           $res=$conn->query("SELECT  * FROM titles ORDER BY release_date Desc LIMIT 8;");
         $res->setFetchMode(PDO::FETCH_ASSOC);
-        <?php
-if (isset ($_GET['id'])&&isset ($_GET['stars'])){
-                $posteur = $_SESSION['id'];
-                $id_actualite= $_GET['id'];
-                $note = $_GET['stars'];
-                $addnote = $bdd->prepare("INSERT INTO `notation` VALUES ('', ?, ?, ?)");
-                $addnote->execute(array($id_actualite, $posteur, $note)); 
-}
-?>
+
         foreach ($res as $ligne) {
 
             echo '
