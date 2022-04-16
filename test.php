@@ -214,66 +214,147 @@ session_start();
                                  <?php
                           $res=$conn->query("SELECT  * FROM titles ORDER BY release_date Desc LIMIT 8;");
         $res->setFetchMode(PDO::FETCH_ASSOC);
+        <?php
+if (isset ($_GET['id'])&&isset ($_GET['stars'])){
+                $posteur = $_SESSION['id'];
+                $id_actualite= $_GET['id'];
+                $note = $_GET['stars'];
+                $addnote = $bdd->prepare("INSERT INTO `notation` VALUES ('', ?, ?, ?)");
+                $addnote->execute(array($id_actualite, $posteur, $note)); 
+}
+?>
         foreach ($res as $ligne) {
+
             echo '
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/1.jpg" alt="">
                             <span class="movie-list-item-title">';
           echo $ligne['NOTE'];
         echo '</span><p class="movie-list-item-desc">
-            <i id ="star_1" href="&stars=1?id=<?php echo $_GET['id'] ?>" class="star" data-note="1">&#9733;</i>
-            <i id ="star_2" href="&stars=2?id=<?php echo $_GET['id'] ?>" class="star" data-note="2">&#9733;</i>
-            <i id ="star_3" href="&stars=3?id=<?php echo $_GET['id'] ?>"class="star" data-note="3">&#9733;</i>
-            <i  id ="star_4" href="&stars=4?id=<?php echo $_GET['id'] ?>" class="star" data-note="4">&#9733;</i>
-            <i id ="star_5" href="&stars=5?id=<?php echo $_GET['id'] ?>" class="star" data-note="5">&#9733;</i>
+        <div class="alert alert-success pull-right hide">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        You gave a rating of <span id="count">0</span> star(s)
+  </div>
+  <div class="row lead">
+      <div id="stars" class="starrr"></div>
+  </div>
+    </div>';
             <i class="note">Note:</i>
-            <script>
-                const stars = document.querySelectorAll('.star');
-                let check = false;
-                stars.forEach(star => {
-                    star.addEventListener('mouseover', selectStars);
-                    star.addEventListener('mouseleave', unselectStars);
-                    star.addEventListener('click', activeSelect);
-                })
-        
-                function selectStars(e) {
-                    const data = e.target;
-                    const etoiles = priviousSiblings(data);
-                    if (!check) {
-                        etoiles.forEach(etoile => {
-                            etoile.classList.add('hover');
-                        })
-                    }
-        
-                }
-        
-                function unselectStars(e) {
-                    const data = e.target;
-                    const etoiles = priviousSiblings(data);
-                    if (!check) {
-                        etoiles.forEach(etoile => {
-                            etoile.classList.remove('hover');
-                        })
-                    }
-                }
-        
-                function activeSelect(e) {
-                    if (!check) {
-                        check = true;
-                        document.querySelector('.note').innerHTML = 'Note ' + e.target.dataset.note;
-                    }
-                }
-        
-                function priviousSiblings(data) {
-                    let values = [data];
-                    while (data = data.previousSibling) {
-                        if (data.nodeName === 'I') {
-                            values.push(data);
-                        }
-                    }
-                    return values;
-                }
-            </script>
+           
+$(".alert").addClass("in").fadeOut(3500);
+// starrr plugin (https://github.com/dobtco/starrr)
+var __slice = [].slice;
+
+(function($, window) {
+  var Starrr;
+
+  Starrr = (function() {
+    Starrr.prototype.defaults = {
+      rating: void 0,
+      numStars: 5,
+      change: function(e, value) {}
+    };
+
+    function Starrr($el, options) {
+      var i, _, _ref,
+        _this = this;
+
+      this.options = $.extend({}, this.defaults, options);
+      this.$el = $el;
+      _ref = this.defaults;
+      for (i in _ref) {
+        _ = _ref[i];
+        if (this.$el.data(i) != null) {
+          this.options[i] = this.$el.data(i);
+        }
+      }
+      this.createStars();
+      this.syncRating();
+      this.$el.on('mouseover.starrr', 'span', function(e) {
+        return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
+      });
+      this.$el.on('mouseout.starrr', function() {
+        return _this.syncRating();
+      });
+      this.$el.on('click.starrr', 'span', function(e) {
+        return _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
+      });
+      this.$el.on('starrr:change', this.options.change);
+    }
+
+    Starrr.prototype.createStars = function() {
+      var _i, _ref, _results;
+
+      _results = [];
+      for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
+        _results.push(this.$el.append("<span class='glyphicon .glyphicon-star-empty'></span>"));
+      }
+      return _results;
+    };
+
+    Starrr.prototype.setRating = function(rating) {
+      if (this.options.rating === rating) {
+        rating = void 0;
+      }
+      this.options.rating = rating;
+      this.syncRating();
+      return this.$el.trigger('starrr:change', rating);
+    };
+
+    Starrr.prototype.syncRating = function(rating) {
+      var i, _i, _j, _ref;
+
+      rating || (rating = this.options.rating);
+      if (rating) {
+        for (i = _i = 0, _ref = rating - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+          this.$el.find('span').eq(i).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+        }
+      }
+      if (rating && rating < 5) {
+        for (i = _j = rating; rating <= 4 ? _j <= 4 : _j >= 4; i = rating <= 4 ? ++_j : --_j) {
+          this.$el.find('span').eq(i).removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+        }
+      }
+      if (!rating) {
+        return this.$el.find('span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+      }
+    };
+
+    return Starrr;
+
+  })();
+  return $.fn.extend({
+    starrr: function() {
+      var args, option;
+
+      option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+      return this.each(function() {
+        var data;
+
+        data = $(this).data('star-rating');
+        if (!data) {
+          $(this).data('star-rating', (data = new Starrr($(this), option)));
+        }
+        if (typeof option === 'string') {
+          return data[option].apply(data, args);
+        }
+      });
+    }
+  });
+})(window.jQuery, window);
+
+$(function() {
+  return $(".starrr").starrr();
+});
+
+$( document ).ready(function() {
+      
+  $('#stars').on('starrr:change', function(e, value){
+  	$('#count').html(value);
+    $('.alert').removeClass('hide').show().delay(1000).addClass("in").fadeOut(3500);
+  });
+  
+});
          
         
                                     </br>
