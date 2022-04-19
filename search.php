@@ -169,7 +169,7 @@ form.form-search:before {
                         </div>
                      </div>
                      <!--------------------scroll film ------------------------------------------>
- 
+                     <br><br><br><br><br>
             <div class="movie-list-container">
                 <h1 class="movie-list-title">Resulat de votre recherche : </h1><br><br><br><br><br><br><br><br>
                 <div class="movie-list-wrapper">
@@ -177,9 +177,9 @@ form.form-search:before {
                       <?php
 
    $str = $_POST["search"];
-   $res=$conn->prepare("SELECT * FROM Titles WHERE title = :str ;");
+   $res=$conn->prepare("SELECT * FROM Titles WHERE title like :str ;");
          $id='1';
-         $res->execute(array(':str' => $str ));
+         $res->execute(array(':str' => "$str%" ));
         $res->setFetchMode(PDO::FETCH_ASSOC);
         foreach ($res as $ligne) {
             echo '

@@ -104,7 +104,7 @@ include("dbconnect.php");
                   <div class="sidebar_user_info">
                      <div class="icon_setting"></div>
                      <div class="user_profle_side">
-                        <div class="user_img"><img class="img-responsive" src="images/layout_img/insta.png" alt="#" /></div>
+                        <div class="user_img"><img class="img-responsive" src="images/layout_img/user.png" alt="#" /></div>
                         <div class="user_info">
                            <h6><?=$_SESSION["nomPrenom"]?></h6>
                            <p><span class="online_animation"></span> En Ligne</p>
@@ -162,7 +162,7 @@ include("dbconnect.php");
                               </ul>
                               <ul class="user_profile_dd">
                                  <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta.png" alt="#" /><span class="name_user"><?=$_SESSION["nomPrenom"]?></span></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/user.png" alt="#" /><span class="name_user"><?=$_SESSION["nomPrenom"]?></span></a>
                                     <div class="dropdown-menu">
                                        <a class="dropdown-item" href="profile.php">My Profile</a>
                                        <a class="dropdown-item" href="settings.php">Settings</a>
@@ -210,7 +210,7 @@ INNER JOIN titles ON notes.Id_title = titles.Id_title WHERE notes.Etat = :etat A
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
                             <span class="movie-list-item-title">';
-          echo $id;
+             echo $ligne['Title'];
         echo '</span><p class="movie-list-item-desc">';
           echo $ligne['release_date'];
         echo '</p>

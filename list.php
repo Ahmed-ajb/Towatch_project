@@ -1,5 +1,7 @@
 <?php
 session_start();
+include("dbconnect.php");
+
     if(@$_SESSION["autoriser"]!="oui"){
         header("location:login.html");
         exit();
@@ -26,6 +28,7 @@ session_start();
       <!-- site css -->
        <link rel="stylesheet" href="style.css" />
       <link rel="stylesheet" href="style2.css" />
+      <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">-->
       <!-- responsive css -->
       <link rel="stylesheet" href="css/responsive.css" />
       <!-- color css -->
@@ -114,7 +117,7 @@ session_start();
                   <div class="sidebar_user_info">
                      <div class="icon_setting"></div>
                      <div class="user_profle_side">
-                        <div class="user_img"><img class="img-responsive" src="images/layout_img/insta.png" alt="#" /></div>
+                        <div class="user_img"><img class="img-responsive" src="images/layout_img/user.png" alt="#" /></div>
                         <div class="user_info">
                            <h6><?=$_SESSION["nomPrenom"]?></h6>
                            <p><span class="online_animation"></span> En Ligne</p>
@@ -174,7 +177,7 @@ session_start();
                               </ul>
                               <ul class="user_profile_dd">
                                  <li>
-                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/insta.png" alt="#" /><span class="name_user">ToWatcher</</span></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown"><img class="img-responsive rounded-circle" src="images/layout_img/user.png" alt="#" /><span class="name_user">ToWatcher</</span></a>
                                     <div class="dropdown-menu">
                                        <a class="dropdown-item" href="profile.php">My Profile</a>
                                        <a class="dropdown-item" href="settings.php">Settings</a>
@@ -214,236 +217,59 @@ session_start();
                                  <?php
                           $res=$conn->query("SELECT  * FROM titles ORDER BY release_date Desc LIMIT 8;");
         $res->setFetchMode(PDO::FETCH_ASSOC);
-
+$i = 0;
         foreach ($res as $ligne) {
+$i = $i + 1 ;
+echo '
 
-            echo '
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
+             <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
                             <span class="movie-list-item-title">';
-          echo $ligne['NOTE'];
-        echo '</span><p class="movie-list-item-desc">
-        <div class="alert alert-success pull-right hide">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        You gave a rating of <span id="count">0</span> star(s)
-  </div>
-  <div class="row lead">
-      <div id="stars" class="starrr"></div>
-  </div>
-    </div>
-            <i class="note">Note:</i>;'
-     <script>      
-$(".alert").addClass("in").fadeOut(3500);
-// starrr plugin (https://github.com/dobtco/starrr)
-var __slice = [].slice;
+          echo $ligne['Title'];
+        echo '</span><p class="movie-list-item-desc">';
+                  echo $ligne['release_date'];
 
-(function($, window) {
-  var Starrr;
-
-  Starrr = (function() {
-    Starrr.prototype.defaults = {
-      rating: void 0,
-      numStars: 5,
-      change: function(e, value) {}
-    };
-
-    function Starrr($el, options) {
-      var i, _, _ref,
-        _this = this;
-
-      this.options = $.extend({}, this.defaults, options);
-      this.$el = $el;
-      _ref = this.defaults;
-      for (i in _ref) {
-        _ = _ref[i];
-        if (this.$el.data(i) != null) {
-          this.options[i] = this.$el.data(i);
-        }
-      }
-      this.createStars();
-      this.syncRating();
-      this.$el.on('mouseover.starrr', 'span', function(e) {
-        return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
-      });
-      this.$el.on('mouseout.starrr', function() {
-        return _this.syncRating();
-      });
-      this.$el.on('click.starrr', 'span', function(e) {
-        return _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
-      });
-      this.$el.on('starrr:change', this.options.change);
-    }
-
-    Starrr.prototype.createStars = function() {
-      var _i, _ref, _results;
-
-      _results = [];
-      for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
-        _results.push(this.$el.append("<span class='glyphicon .glyphicon-star-empty'></span>"));
-      }
-      return _results;
-    };
-
-    Starrr.prototype.setRating = function(rating) {
-      if (this.options.rating === rating) {
-        rating = void 0;
-      }
-      this.options.rating = rating;
-      this.syncRating();
-      return this.$el.trigger('starrr:change', rating);
-    };
-
-    Starrr.prototype.syncRating = function(rating) {
-      var i, _i, _j, _ref;
-
-      rating || (rating = this.options.rating);
-      if (rating) {
-        for (i = _i = 0, _ref = rating - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
-          this.$el.find('span').eq(i).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
-        }
-      }
-      if (rating && rating < 5) {
-        for (i = _j = rating; rating <= 4 ? _j <= 4 : _j >= 4; i = rating <= 4 ? ++_j : --_j) {
-          this.$el.find('span').eq(i).removeClass('glyphicon-star').addClass('glyphicon-star-empty');
-        }
-      }
-      if (!rating) {
-        return this.$el.find('span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
-      }
-    };
-
-    return Starrr;
-
-  })();
-  return $.fn.extend({
-    starrr: function() {
-      var args, option;
-
-      option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-      return this.each(function() {
-        var data;
-
-        data = $(this).data('star-rating');
-        if (!data) {
-          $(this).data('star-rating', (data = new Starrr($(this), option)));
-        }
-        if (typeof option === 'string') {
-          return data[option].apply(data, args);
-        }
-      });
-    }
-  });
-})(window.jQuery, window);
-
-$(function() {
-  return $(".starrr").starrr();
-});
-
-$( document ).ready(function() {
-      
-  $('#stars').on('starrr:change', function(e, value){
-  	$('#count').html(value);
-    $('.alert').removeClass('hide').show().delay(1000).addClass("in").fadeOut(3500);
-  });
-  
-});
-</script>
-         echo '
+echo '
+        <br><h>note:</h>
+       <i class="fa fa-star fa-2x" data-index="0"></i>
+        <i class="fa fa-star fa-2x" data-index="1"></i>
+        <i class="fa fa-star fa-2x" data-index="2"></i>
+        <i class="fa fa-star fa-2x" data-index="3"></i>
+        <i class="fa fa-star fa-2x" data-index="4"></i>
         
-                                    </br>
-                                 
-                                      <h>Add to watchlist  : </h>
-                                        <input id="toggle-heart" type="checkbox" name="heart"/>
-                                        <label for="toggle-heart">❤</label>
-                                        </p>
+                                      <br><h>Add to watchlist  : </h>
                                         
-                                    <button class="movie-list-item-button">Watch</button>
-                                  
-                                </div>';
-                                if (isset($_POST["heart"])) {
-                                    $res=$conn->prepare("INSERT INTO notes WHERE Id_user = ? And id_film = ? VALUES(1)");
-                                } else {    
-                                    $res=$conn->prepare("INSERT INTO notes WHERE Id_user = ? And id_film = ? VALUES(0)");
-                                }
-          echo $ligne['release_date'];
-        
-                               
- 
-     
 
-                   
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/2.jpg" alt="">
-                            <span class="movie-list-item-title">Life In A Year</span>
-                            <p class="movie-list-item-desc">
-                                Réalisateur : Mitja Okorn </br>
-                                Langue : Anglais </br>
-                                Durée : 1h 47m</br></p>
-                                
-                            <button class="movie-list-item-button">Watch</button>
-                            
+                                        <label for="toggle-heart">❤</label>
+
+                            <button style = "top : -50px" class="movie-list-item-button">Watch</button></p>
+                        </div>';
+       } ?>
                         </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/3.jpg" alt="">
-                            <span class="movie-list-item-title">Zero</span>
-                            <p class="movie-list-item-desc">
-                                Réalisateur : Nour-Eddine Lakhmari</br>
-                                Langue : Arabe Dialectal Marocain </br>
-                                Durée : 2h52m</br></p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                    </div>
                     <i class="fa fa-chevron-right arrow"></i>
                 </div>
             </div>
-            <div class="movie-list-container">
+
+             <div class="movie-list-container">
                 <h1 class="movie-list-title">nouveauté</h1>
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
+                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                                hic fugit similique accusantium.</p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/2.jpg" alt="">
+                            <span class="movie-list-item-title">Her</span>
+                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                                hic fugit similique accusantium.</p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="img/3.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
@@ -451,20 +277,6 @@ $( document ).ready(function() {
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/6.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/7.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
@@ -508,11 +320,77 @@ $( document ).ready(function() {
                     </div>
                     <i class="fa fa-chevron-right arrow"></i>
                 </div>
-            </div>
-            
-                     <!------------------- java script -------------------------------------------->
+            </div></div>
 
+           
+                     <!------------------- java script -------------------------------------------->
+<script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
  <script src="app.js"></script>
+<script src="sys_note.js"></script>
+  
+   <script>
+        var ratedIndex = -1, uID = 2;
+ 
+        $(document).ready(function () {
+            resetStarColors();
+ 
+            if (localStorage.getItem('ratedIndex') != null) {
+                setStars(parseInt(localStorage.getItem('ratedIndex')));
+
+                uID = localStorage.getItem('uID');
+            }
+ 
+            $('.fa-star').on('click', function () {
+                alert('salut');
+               ratedIndex = parseInt($(this).data('index'));
+               localStorage.setItem('ratedIndex', ratedIndex);
+            alert(ratedIndex);
+            });
+ 
+            $('.fa-star').mouseover(function () {
+                resetStarColors();
+                var currentIndex = parseInt($(this).data('index'));
+                setStars(currentIndex);
+            });
+ 
+            $('.fa-star').mouseleave(function () {
+                resetStarColors();
+ 
+                if (ratedIndex != -1)
+                    setStars(ratedIndex);
+            });
+        });
+ 
+        function saveToTheDB() {
+            $.ajax({
+               url: 'index.php',
+               method: 'POST',
+               dataType: 'json',
+               data: {
+                   save: 1,
+                   uID: uID,
+                   ratedIndex: ratedIndex
+               }, success: function (r) {
+                    uID = r.id;
+                    localStorage.setItem('uID', uID);
+               }
+            });
+        }
+ 
+        function setStars(max) {
+            for (var i=0; i <= max; i++)
+                $('.fa-star:eq('+i+')').css('color', 'green');
+        }
+ 
+        function resetStarColors() {
+            $('.fa-star').css('color', 'white');
+        }
+    </script>
+
+
+
+
+
                      <!----------------------------------------------------------------->
                         </div>
                      </div>
@@ -581,4 +459,5 @@ $( document ).ready(function() {
       <!-- calendar file css -->    
       <script src="js/semantic.min.js"></script>
    </body>
+  
 </html>
