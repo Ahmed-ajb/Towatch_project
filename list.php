@@ -48,6 +48,36 @@ include("dbconnect.php");
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
           <style type="text/css">
+.rating {
+width: 226px;
+margin: 0 auto 1em;
+font-size: 10px;
+overflow:hidden;
+}
+.rating a {
+float:right;
+color: #aaa;
+text-decoration: none;
+-webkit-transition: color .4s;
+-moz-transition: color .4s;
+-o-transition: color .4s;
+transition: color .4s;
+}
+.rating a:hover,
+.rating a:hover ~ a,
+.rating a:focus,
+.rating a:focus ~ a{
+color: green;
+cursor: pointer;
+}
+.rating2 {
+direction: rtl;
+}
+.rating2 a {
+float:none
+}
+
+
 .searchbar{
     margin-bottom: auto;
     margin-top: auto;
@@ -150,7 +180,7 @@ include("dbconnect.php");
                               <a href="login.php">> <span>Login</span></a>
                            </li>
                            <li>
-                              <a href="404_error.php">> <span>404 Error</span></a>
+                              <a href="404_error.php"><span>404 Error</span></a>
                            </li>
                         </ul>
                      </li>
@@ -182,7 +212,7 @@ include("dbconnect.php");
                                        <a class="dropdown-item" href="profile.php">My Profile</a>
                                        <a class="dropdown-item" href="settings.php">Settings</a>
                                        <a class="dropdown-item" href="help.php">Help</a>
-                                       <a class="dropdown-item" href="deconnexion.php"><><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
+                                       <a class="dropdown-item" href="deconnexion.php"><span>Log Out</span> <i class="fa fa-sign-out"></i></a>
                                     </div>
                                  </li>
                               </ul>
@@ -226,23 +256,25 @@ echo '
                             <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
                             <span class="movie-list-item-title">';
           echo $ligne['Title'];
-        echo '</span><p class="movie-list-item-desc">';
+        echo '</span><div class="movie-list-item-desc"><p>';
                   echo $ligne['release_date'];
 
 echo '
-        <br><h>note:</h>
-       <i class="fa fa-star fa-2x" data-index="0"></i>
-        <i class="fa fa-star fa-2x" data-index="1"></i>
-        <i class="fa fa-star fa-2x" data-index="2"></i>
-        <i class="fa fa-star fa-2x" data-index="3"></i>
-        <i class="fa fa-star fa-2x" data-index="4"></i>
+      <h>note : </h> <div class="rating rating2"> 
+        <a href="?mod=actualite&id='.$_GET['id'].'&stars=5" title="Give 5 stars">★</a>
+        <a href="?mod=actualite&id='.$_GET['id'].'&stars=4" title="Give 4 stars">★</a>
+        <a href="?mod=actualite&id='.$_GET['id'].'&stars=3" title="Give 3 stars">★</a>
+        <a href="?mod=actualite&id='.$_GET['id'].'&stars=2" title="Give 2 stars">★</a>
+        <a href="?mod=actualite&id='.$_GET['id'].'&stars=1" title="Give 1 star">★</a>
+    </div>
         
                                       <br><h>Add to watchlist  : </h>
                                         
 
+                                        <!-- <input class="toggle-heart" type="checkbox" name="heart"/>-->
                                         <label for="toggle-heart">❤</label>
 
-                            <button style = "top : -50px" class="movie-list-item-button">Watch</button></p>
+                            <button style = "top : -50px" class="movie-list-item-button">Watch</button></div>
                         </div>';
        } ?>
                         </div>
@@ -250,76 +282,7 @@ echo '
                 </div>
             </div>
 
-             <div class="movie-list-container">
-                <h1 class="movie-list-title">nouveauté</h1>
-                <div class="movie-list-wrapper">
-                    <div class="movie-list">
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/1.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/2.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/3.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/8.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                        <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
-                        </div>
-                    </div>
-                    <i class="fa fa-chevron-right arrow"></i>
-                </div>
+             
             </div></div>
 
            
