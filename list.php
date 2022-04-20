@@ -48,35 +48,13 @@ include("dbconnect.php");
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
       <![endif]-->
           <style type="text/css">
-.rating {
-width: 226px;
-margin: 0 auto 1em;
-font-size: 10px;
-overflow:hidden;
-}
-.rating a {
-float:right;
-color: #aaa;
-text-decoration: none;
--webkit-transition: color .4s;
--moz-transition: color .4s;
--o-transition: color .4s;
-transition: color .4s;
-}
-.rating a:hover,
-.rating a:hover ~ a,
-.rating a:focus,
-.rating a:focus ~ a{
-color: green;
-cursor: pointer;
-}
-.rating2 {
-direction: rtl;
-}
-.rating2 a {
-float:none
-}
-
+        .star {
+            font-size: 1.5rem;
+        }
+        
+        .hover {
+            color: rgb(255, 196, 0);
+        }
 
 .searchbar{
     margin-bottom: auto;
@@ -247,41 +225,33 @@ float:none
                                  <?php
                           $res=$conn->query("SELECT  * FROM titles ORDER BY release_date Desc LIMIT 8;");
         $res->setFetchMode(PDO::FETCH_ASSOC);
-$i = 0;
         foreach ($res as $ligne) {
-$i = $i + 1 ;
 echo '
-
-             <div class="movie-list-item">
+<div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/cine_nvt.jpg" alt="">
                             <span class="movie-list-item-title">';
           echo $ligne['Title'];
-        echo '</span><div class="movie-list-item-desc"><p>';
-                  echo $ligne['release_date'];
+        echo '</span><p class="movie-list-item-desc">';
+          echo $ligne['release_date'];
+       echo' 
+       <i class = "star">&#9733;</i>
+       <i class = "star">&#9733;</i>
+       <i class = "star">&#9733;</i>
+       <i class = "star">&#9733;</i>
+       <i class = "star">&#9733;</i>
+           <i class="note">Note: </i>
 
-echo '
-      <h>note : </h> <div class="rating rating2"> 
-        <a href="?mod=actualite&id='.$_GET['id'].'&stars=5" title="Give 5 stars">★</a>
-        <a href="?mod=actualite&id='.$_GET['id'].'&stars=4" title="Give 4 stars">★</a>
-        <a href="?mod=actualite&id='.$_GET['id'].'&stars=3" title="Give 3 stars">★</a>
-        <a href="?mod=actualite&id='.$_GET['id'].'&stars=2" title="Give 2 stars">★</a>
-        <a href="?mod=actualite&id='.$_GET['id'].'&stars=1" title="Give 1 star">★</a>
-    </div>
         
-                                      <br><h>Add to watchlist  : </h>
-                                        
-
+                                      <br><h>Add to watchlist : </h>
                                         <!-- <input class="toggle-heart" type="checkbox" name="heart"/>-->
-                                        <label for="toggle-heart">❤</label>
-
-                            <button style = "top : -50px" class="movie-list-item-button">Watch</button></div>
+                                        <label for="toggle-heart">❤</label></p>
+                            <button class="movie-list-item-button">Watch</button>
                         </div>';
+
+
        } ?>
                         </div>
                     <i class="fa fa-chevron-right arrow"></i>
-                </div>
-            </div>
-
              
             </div></div>
 
@@ -291,65 +261,53 @@ echo '
  <script src="app.js"></script>
 <script src="sys_note.js"></script>
   
-   <script>
-        var ratedIndex = -1, uID = 2;
- 
-        $(document).ready(function () {
-            resetStarColors();
- 
-            if (localStorage.getItem('ratedIndex') != null) {
-                setStars(parseInt(localStorage.getItem('ratedIndex')));
+    <script>
+        const stars = document.querySelectorAll('.star');
+        let check = false;
+        stars.forEach(star => {
+            star.addEventListener('mouseover', selectStars);
+            star.addEventListener('mouseleave', unselectStars);
+            star.addEventListener('click', activeSelect);
+        })
 
-                uID = localStorage.getItem('uID');
+        function selectStars(e) {
+            const data = e.target;
+            const etoiles = priviousSiblings(data);
+            if (!check) {
+                etoiles.forEach(etoile => {
+                    etoile.classList.add('hover');
+                })
             }
- 
-            $('.fa-star').on('click', function () {
-                alert('salut');
-               ratedIndex = parseInt($(this).data('index'));
-               localStorage.setItem('ratedIndex', ratedIndex);
-            alert(ratedIndex);
-            });
- 
-            $('.fa-star').mouseover(function () {
-                resetStarColors();
-                var currentIndex = parseInt($(this).data('index'));
-                setStars(currentIndex);
-            });
- 
-            $('.fa-star').mouseleave(function () {
-                resetStarColors();
- 
-                if (ratedIndex != -1)
-                    setStars(ratedIndex);
-            });
-        });
- 
-        function saveToTheDB() {
-            $.ajax({
-               url: 'index.php',
-               method: 'POST',
-               dataType: 'json',
-               data: {
-                   save: 1,
-                   uID: uID,
-                   ratedIndex: ratedIndex
-               }, success: function (r) {
-                    uID = r.id;
-                    localStorage.setItem('uID', uID);
-               }
-            });
+
         }
- 
-        function setStars(max) {
-            for (var i=0; i <= max; i++)
-                $('.fa-star:eq('+i+')').css('color', 'green');
+
+        function unselectStars(e) {
+            const data = e.target;
+            const etoiles = priviousSiblings(data);
+            if (!check) {
+                etoiles.forEach(etoile => {
+                    etoile.classList.remove('hover');
+                })
+            }
         }
- 
-        function resetStarColors() {
-            $('.fa-star').css('color', 'white');
+
+        function activeSelect(e) {
+            if (!check) {
+                check = true;
+                document.querySelector('.note').innerHTML = 'Note ' + e.target.dataset.note;
+            }
+        }
+
+        function priviousSiblings(data) {
+            let values = [data];
+            while (data = data.previousSibling) {
+                if (data.nodeName === 'I') {
+                    values.push(data);
+                }
+            }
+            return values;
         }
     </script>
-
 
 
 
